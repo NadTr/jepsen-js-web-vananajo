@@ -3,4 +3,4 @@
 - You can also edit your ideas by clicking on the "Edit" button.
 - You can also delete the ideas you don't want to see anymore by clicking "Delete" button.
 
-- Enjoy, and good luck with your world's conquest !
+- Enjoy, and good luck with your world's conquest !!!
