@@ -8,3 +8,44 @@
   If you need some CSS for any reason you can put it here.
 */
 
+
+body{
+  margin:auto;
+  background-color: black;
+  background-image: url(https://c.pxhere.com/images/fd/93/9bfb7f8734d3dadfa3cb40dbf9e9-1460325.jpg!d);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  color:black;
+  font-family: 'Creepster', cursive;
+  font-size: 2em;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.container{
+  width: 80%;
+  height: 90%;
+  text-align: center;
+  margin:0.3em;
+  margin-left: 4em;
+  background-color: white;
+  border: 1px solid black;
+  opacity: 0.7;
+ }
+
+ #edit{
+   background-image:f303;
+   background-size: contain;
+   background-position: left;
+   margin:2em;
+
+ }
+ #delete{
+   background-image:f2ed;
+   background-size: contain;
+   background-position: left;
+   margin:2em;
+
+ }
