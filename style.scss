@@ -8,11 +8,10 @@
   If you need some CSS for any reason you can put it here.
 */
 
-
 body{
   margin:auto;
   background-color: black;
-  background-image: url(https://c.pxhere.com/images/fd/93/9bfb7f8734d3dadfa3cb40dbf9e9-1460325.jpg!d);
+  background-image: url(https://i.pinimg.com/originals/f8/16/3c/f8163c153c324dabdbe994716468e39b.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,7 +23,7 @@ body{
   text-align: center;
 }
 
-.container{
+#wrapper{
   width: 80%;
   height: 90%;
   text-align: center;
@@ -32,20 +31,5 @@ body{
   margin-left: 4em;
   background-color: white;
   border: 1px solid black;
-  opacity: 0.7;
- }
-
- #edit{
-   background-image:f303;
-   background-size: contain;
-   background-position: left;
-   margin:2em;
-
- }
- #delete{
-   background-image:f2ed;
-   background-size: contain;
-   background-position: left;
-   margin:2em;
-
+  opacity: 0.4;
  }
