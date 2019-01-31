@@ -12,4 +12,35 @@ import "./style.scss";
   Put the JavaScript code you want below.
 */
 
-console.log("Hey look in your browser console. It works!");
+window.localStorage.clear();
+
+let namesArray = [];
+let plansArray = [];
+
+function addItem(name, plan){
+	let li = document.createElement("li");
+	let h1 = document.createElement("h1");
+	let p = document.createElement("p");
+	let h1Content = document.createTextNode(name);
+	let pContent = document.createTextNode(plan);
+	h1.appendChild(h1Content);
+	p.appendChild(pContent);
+	li.appendChild(h1);
+	li.appendChild(p);
+	document.querySelector(".list").appendChild(li);
+}
+
+document.querySelector(".add").addEventListener("click", () => {
+	document.querySelector(".modal-content").innerText = "";
+	document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your name:</p><input type="text" name="test" class="name" placeholder="Enter Name"></input><p>Your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
+	document.querySelector(".modal").style.display = "block";
+	
+	document.querySelector(".submit").addEventListener("click", () => {
+		plansArray.push(document.querySelector(".plan").value);
+		window.localStorage.setItem('plans', JSON.stringify(plansArray));
+		namesArray.push(document.querySelector(".name").value);
+		window.localStorage.setItem('names', JSON.stringify(namesArray))
+		addItem(document.querySelector(".name").value, document.querySelector(".plan").value);
+		document.querySelector(".modal").style.display = "none";
+	});
+});
