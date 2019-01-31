@@ -41,5 +41,6 @@ document.querySelector(".add").addEventListener("click", () => {
 		namesArray.push(document.querySelector(".name").value);
 		window.localStorage.setItem('names', JSON.stringify(namesArray))
 		addItem(document.querySelector(".name").value, document.querySelector(".plan").value);
+		document.querySelector(".modal").style.display = "none";
 	});
 });
