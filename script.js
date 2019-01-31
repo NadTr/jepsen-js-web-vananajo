@@ -16,6 +16,7 @@ window.localStorage.clear();
 
 let namesArray = [];
 let plansArray = [];
+let list = [];
 
 function addItem(name, plan){
 	let li = document.createElement("li");
@@ -27,6 +28,7 @@ function addItem(name, plan){
 	p.appendChild(pContent);
 	li.appendChild(h1);
 	li.appendChild(p);
+	list.push(li);
 	document.querySelector(".list").appendChild(li);
 }
 
@@ -41,5 +43,19 @@ document.querySelector(".add").addEventListener("click", () => {
 		namesArray.push(document.querySelector(".name").value);
 		window.localStorage.setItem('names', JSON.stringify(namesArray))
 		addItem(document.querySelector(".name").value, document.querySelector(".plan").value);
+		document.querySelector(".modal").style.display = "none";
 	});
 });
+
+if(list.length > 0){
+	for (let i = 0; i < list.length; i++){
+	    (function(index){
+	        list[i].onclick = function(){
+	            document.querySelector(".modal-content").innerText = "";
+				document.querySelector(".modal-content").innerHTML = list[i];
+	  			document.querySelector(".modal").style.display = "block";
+	  			console.log(list);
+	    	} 
+		})(i);
+	}
+}
