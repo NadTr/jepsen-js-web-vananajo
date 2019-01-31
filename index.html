@@ -6,8 +6,6 @@
 
     <title>BeCode/JavaScript for the Web Exercise</title>
 
-    <link rel="icon" href="./_shared/img/becode-seal.png" />
-
     <!-- Font Awesome -->
     <link rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
@@ -18,23 +16,34 @@
   <body>
     <div class="container">
       <header>
-        <h1>BeCode / JavaScript for the Web</h1>
-        <h2>
-          <strong><i class="fas fa-arrow-right"></i> Insert exercise name here <i class="fas fa-arrow-left"></i></strong>
-        </h2>
+        <h1 id="title">Vananajo</h1>
+        <h2 id="title2">The perfect way to conquer the world</h2>
       </header>
       <div class="content">
-        <ul class="list"><ul>
-        <button class="add">Add new plan</button>
-
-        <div id="myModal" class="modal">
-          <div class="modal-content">
+        <div id="list">
+          <h2> Ideas to conquer the world </h2>
+          <div id="ideas">
+            <ul>
+              <li>idée 1: blabla</li>
+              <li>idée 2: bloblo</li>
+              <li>idée 3: jamé2-100-3</li>
+              <li>Bonsoir</li>
+            </ul>
           </div>
-         </div>
-        <div class="characters"></div>
-      </div>
+          <div class="creation">
+            <button id="create" class="add">Create new idea</button>
+            <div id="myModal" class="modal">
+            <div class="modal-content"></div>
+            </div>
+          </div>
+        </div>
+        <div id ="buttons">
+          <button id="edit"><i class="fas fa-pencil-alt"></i>Edit</button>
+          <button id="delete"><i class="fas fa-trash-alt"></i>Delete</button>
+        </div>
       </div>
     </div>
+
     <script src="./script.js"></script>
   </body>
-</html> 
+</html>
