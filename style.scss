@@ -27,8 +27,6 @@ body{
   font-weight: lighter;
   text-align: center;
 }
-header{
-}
 
 .container{
   width: 80%;
@@ -36,11 +34,13 @@ header{
   text-align: center;
   margin:0.3em;
   margin-left: 4em;
-  background-color: white;
-  border: 1px solid black;
-  opacity: 0.4;
+  background-color: rgba(255,255,255,0.3);
+  border: 1px none black;
  }
-
+.content{
+  background-color: rgba(255,255,255,0.4);
+  border: 1px none black;
+}
 
 .modal {
   display: none;
