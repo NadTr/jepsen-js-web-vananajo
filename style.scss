@@ -30,6 +30,18 @@ body{
 header{
 }
 
+ul{
+	list-style-type: none;
+}
+
+li{
+	border-style: solid;
+}
+
+li > p{
+	text-align: left;
+}
+
 .container{
   width: 80%;
   height: 90%;
