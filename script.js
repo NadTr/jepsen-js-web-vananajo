@@ -19,13 +19,13 @@ let list = [];
 
 function addItem(name, plan){
 	let li = document.createElement("li");
-	let h1 = document.createElement("h1");
+	let h2 = document.createElement("h2");
 	let p = document.createElement("p");
-	let h1Content = document.createTextNode(name);
+	let h2Content = document.createTextNode(name);
 	let pContent = document.createTextNode(plan);
-	h1.appendChild(h1Content);
+	h2.appendChild(h2Content);
 	p.appendChild(pContent);
-	li.appendChild(h1);
+	li.appendChild(h2);
 	li.appendChild(p);
 	list.push(li);
 	document.querySelector(".list").appendChild(li);
@@ -35,10 +35,21 @@ function addItem(name, plan){
 	            document.querySelector(".modal-content").innerText = "";
 	            let div = document.createElement("div");
 	            let text = document.createTextNode(list[i].innerHTML);
+	            let comment = document.createElement("BUTTON");
+	            let textArea = document.createElement("TEXTAREA");
+	            let commentText = document.createTextNode("Comment");
+	            comment.appendChild(commentText);
 	            div.appendChild(text);
 				document.querySelector(".modal-content").innerHTML = div.innerText;
+				document.querySelector(".modal-content").appendChild(textArea);
+	            document.querySelector(".modal-content").appendChild(comment);
 	  			document.querySelector(".modal").style.display = "block";
-	  			console.log(list);
+	  			
+	  			comment.addEventListener("click", () => {
+	  				let comments = eval("comments" + i + "= []");
+	  				window.localStorage.setItem( comments + i, textArea.value);
+
+	  			});
     		} 
 		})(i);
 	}
