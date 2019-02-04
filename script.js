@@ -24,21 +24,22 @@ function addItem(name, plan){
 	let p = document.createElement("p");
 	let h2Content = document.createTextNode(name);
 	let pContent = document.createTextNode(plan);
-	let editButton = document.createElement("button");
-	let deleteButton = document.createElement("button");
-	let textEdit = document.createTextNode("Edit");
-	let textDelete = document.createTextNode("Delete");
-
 	h2.appendChild(h2Content);
 	p.appendChild(pContent);
 	li.appendChild(h2);
 	li.appendChild(p);
-	editButton.appendChild(textEdit);
-	deleteButton.appendChild(textDelete);
-	h2.appendChild(editButton);
-	h2.appendChild(deleteButton);
 	list.push(li);
 	document.querySelector(".list").appendChild(li);
+	let editButton = document.createElement("button");
+	let deleteButton = document.createElement("button");
+	let textEdit = document.createTextNode("Edit");
+	let textDelete = document.createTextNode("Delete");
+	editButton.appendChild(textEdit);
+	deleteButton.appendChild(textDelete);
+	editButton.className = "edit";
+	deleteButton.className = "delete"
+	h2.appendChild(editButton);
+	h2.appendChild(deleteButton);
 	let commentsArray = [];
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
@@ -46,7 +47,7 @@ function addItem(name, plan){
 	            document.querySelector(".modal-content").innerText = "";
 	            let div = document.createElement("div");
 	            let text = document.createTextNode(list[i].innerHTML);
-				let comment = document.createElement("BUTTON");
+	            let comment = document.createElement("BUTTON");
 	            let textArea = document.createElement("TEXTAREA");
 	            textArea.class = "comment";
 	            let commentText = document.createTextNode("Comment");
@@ -60,14 +61,15 @@ function addItem(name, plan){
 	  				commentsArray.push(textArea.value);
 	  				window.localStorage.setItem( 'Comments' + i, JSON.stringify(commentsArray));
 	  			});
+
     		} 
-    		})
-	}(i);
+    	})(i);
+    }
 }
 	
 // Ouverture de la fenêtre modale de création d'idée
 
-document.querySelector(".add").addEventListener("click", () => {
+document.querySelector(".add").addEventListener("click", (e) => {
 	document.querySelector(".modal-content").innerText = "";
 	document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your idea:</p><input type="text" name="test" class="name" placeholder="Enter idea"></input><p>Description of your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
 	document.querySelector(".modal").style.display = "block";
@@ -90,15 +92,15 @@ window.onclick = function(event){
   		}
 	}
 
-
+let edit = document.querySelector(".edit");
+edit.addEventListener("click", function(e){
+	document.querySelector("li")
+})
 	/*TO DO: ajouter ces boutons à chaque li
 	<div id ="buttons">
 		<button id="edit"><i class="fas fa-pencil-alt"></i>Edit</button>
 		<button id="delete"><i class="fas fa-trash-alt"></i>Delete</button>
 </div>
-
-
-
 for (let i = 0; i < list.length; i++){
     (function(index){
         list[i].onclick = function(){

@@ -80,6 +80,10 @@ li{
   border: 5px solid black;
   width: 50%;
   border-radius : 10px;
+  .edit,.delete{
+    display: none;
+  }
+
 }
 
 .modal-content > p{
