@@ -50,7 +50,7 @@ function addItem(name, plan){
     		}
 
 	  			console.log(list);
-    		}
+
 		})(i);
 	}
 }
@@ -77,6 +77,15 @@ window.onclick = function(event){
    			document.querySelector(".modal").style.display = "none";
   		}
 	}
+
+
+	/*TO DO: ajouter ces boutons à chaque li
+	<div id ="buttons">
+		<button id="edit"><i class="fas fa-pencil-alt"></i>Edit</button>
+		<button id="delete"><i class="fas fa-trash-alt"></i>Delete</button>
+</div>
+
+
 /*
 for (let i = 0; i < list.length; i++){
     (function(index){
