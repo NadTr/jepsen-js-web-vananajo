@@ -93,11 +93,23 @@ window.onclick = function(event){
    			document.querySelector(".modal").style.display = "none";
   		}
 	}
-
 let edit = document.querySelector(".edit");
 edit.addEventListener("click", function(e){
 	document.querySelector("li")
 })
+
+// Suppression d'une idée (name et plan) et de tous ses commentaires
+/*
+document.querySelector(".delete").addEventListener("click", () => {
+	deleteIdea = window.confirm("Do you really want to delete this idea?");
+if (deleteIdea){
+index=this.rowIndex; //ou .index?
+storage.removeItem("names"+index);
+storage.removeItem("plans"+index);
+storage.removeItem("comments"+index);
+}
+	});
+*/
 	/*TO DO: ajouter ces boutons à chaque li
 	<div id ="buttons">
 		<button id="edit"><i class="fas fa-pencil-alt"></i>Edit</button>
