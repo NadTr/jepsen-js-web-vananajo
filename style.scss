@@ -41,8 +41,6 @@ ul{
 li{
 	border-style: solid;
   margin: 3px;
-  text-align: left;
-
 }
 
 .list > li > p{
@@ -83,6 +81,10 @@ li{
   width: 50%;
 }
 
+.modal-content > p{
+  text-align: left;
+}
+
 .close {
   color: #aaa;
   float: right;
@@ -101,4 +103,8 @@ li{
   position : absolute;
   top : -100px;
   left: 30px;
+}
+
+.comment{
+  width: 50%;
 }
