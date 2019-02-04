@@ -31,6 +31,18 @@ h2{
   font-size: 2.5em;
 }
 
+ul{
+	list-style-type: none;
+}
+
+li{
+	border-style: solid;
+}
+
+li > p{
+	text-align: left;
+}
+
 .container{
   width: 80%;
   height: 90%;
