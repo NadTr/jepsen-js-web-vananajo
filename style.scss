@@ -30,7 +30,11 @@ h3{
   font-size: 2.8em;
   font-weight: lighter;
 }
-
+.add:hover {
+    cursor: pointer;
+    color:black;
+    font-size: 15pt;
+}
 ul{
 	list-style-type: none;
   text-align: center;
@@ -44,6 +48,7 @@ li{
 }
 li:hover {
   color:white;
+  cursor: pointer;
 }
 
 .list > li > p{
@@ -58,8 +63,8 @@ li:hover {
   margin:0.3em;
   margin:auto;
   background-color: rgba(255,255,255,0.2);
+//  opacity:0.5;
  // border: 1px solid black;
-  //opacity: 0.5;
  }
 
 .modal {
@@ -113,7 +118,7 @@ li:hover {
 }
 #diabolic {
   position:fixed;
-  left:9%;
+  left:0;
   width:9%;
   bottom:0;
 }
