@@ -49,11 +49,8 @@ function addItem(name, plan){
 	  				window.localStorage.setItem( comments + i, textArea.value);
 	  			});
     		} 
-
-	  			console.log(list);
-    		}
-		})(i);
-	}
+    		})
+	}(i);
 }
 
 document.querySelector(".add").addEventListener("click", () => {
