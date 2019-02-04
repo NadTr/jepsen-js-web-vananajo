@@ -58,10 +58,9 @@ function addItem(name, plan){
 	  				commentsArray.push(textArea.value);
 	  				window.localStorage.setItem( 'Comments' + i, JSON.stringify(commentsArray));
 	  			});
-
     		} 
-    	})(i);
-    }
+    		})
+	}(i);
 }
 	
 
