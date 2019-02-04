@@ -1,3 +1,4 @@
+
 // import some polyfill to ensure everything works OK
 import "babel-polyfill"
 
@@ -17,7 +18,7 @@ let namesArray = [];
 let plansArray = [];
 let list = [];
 
-function addItem(name, plan){
+function addItem(name, plan){	
 	let li = document.createElement("li");
 	let h2 = document.createElement("h2");
 	let p = document.createElement("p");
@@ -29,6 +30,7 @@ function addItem(name, plan){
 	li.appendChild(p);
 	list.push(li);
 	document.querySelector(".list").appendChild(li);
+	let commentsArray = [];
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
 	        list[i].onclick = function(){
@@ -37,6 +39,7 @@ function addItem(name, plan){
 	            let text = document.createTextNode(list[i].innerHTML);
 	            let comment = document.createElement("BUTTON");
 	            let textArea = document.createElement("TEXTAREA");
+	            textArea.class = "comment";
 	            let commentText = document.createTextNode("Comment");
 	            comment.appendChild(commentText);
 	            div.appendChild(text);
@@ -45,13 +48,15 @@ function addItem(name, plan){
 	            document.querySelector(".modal-content").appendChild(comment);
 	  			document.querySelector(".modal").style.display = "block";	
 	  			comment.addEventListener("click", () => {
-	  				let comments = eval("comments" + i + "= []");
-	  				window.localStorage.setItem( comments + i, textArea.value);
+	  				commentsArray.push(textArea.value);
+	  				window.localStorage.setItem( 'Comments' + i, JSON.stringify(commentsArray));
 	  			});
     		} 
     		})
 	}(i);
 }
+	
+// Ouverture de la fenêtre modale de création d'idée
 
 document.querySelector(".add").addEventListener("click", () => {
 	document.querySelector(".modal-content").innerText = "";
@@ -68,12 +73,23 @@ document.querySelector(".add").addEventListener("click", () => {
 	});
 });
 
+// Fermeture de la fenêtre modale lorqu'on clique en dehors
+
 window.onclick = function(event){
  		if (event.target == document.querySelector(".modal")){
    			document.querySelector(".modal").style.display = "none";
   		}
 	}
-/*
+
+
+	/*TO DO: ajouter ces boutons à chaque li
+	<div id ="buttons">
+		<button id="edit"><i class="fas fa-pencil-alt"></i>Edit</button>
+		<button id="delete"><i class="fas fa-trash-alt"></i>Delete</button>
+</div>
+
+
+
 for (let i = 0; i < list.length; i++){
     (function(index){
         list[i].onclick = function(){
