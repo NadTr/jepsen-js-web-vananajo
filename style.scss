@@ -42,6 +42,9 @@ li{
 	border-style: solid;
   margin: 3px;
 }
+li:hover {
+  color:white;
+}
 
 .list > li > p{
 	text-align: left;
@@ -107,4 +110,10 @@ li{
 
 .comment{
   width: 50%;
+}
+#diabolic {
+  position:fixed;
+  left:9%;
+  width:9%;
+  bottom:0;
 }
