@@ -1,4 +1,3 @@
-
 // import some polyfill to ensure everything works OK
 import "babel-polyfill"
 
@@ -16,6 +15,7 @@ window.localStorage.clear();
 
 let namesArray = [];
 let plansArray = [];
+let list = [];
 
 function addItem(name, plan){
 	let li = document.createElement("li");
@@ -27,7 +27,21 @@ function addItem(name, plan){
 	p.appendChild(pContent);
 	li.appendChild(h1);
 	li.appendChild(p);
+	list.push(li);
 	document.querySelector(".list").appendChild(li);
+	for (let i = 0; i < list.length; i++){
+	    (function(index){
+	        list[i].onclick = function(){
+	            document.querySelector(".modal-content").innerText = "";
+	            let div = document.createElement("div");
+	            let text = document.createTextNode(list[i].innerHTML);
+	            div.appendChild(text);
+				document.querySelector(".modal-content").innerHTML = div.innerText;
+	  			document.querySelector(".modal").style.display = "block";
+	  			console.log(list);
+    		} 
+		})(i);
+	}
 }
 
 document.querySelector(".add").addEventListener("click", () => {
@@ -44,3 +58,21 @@ document.querySelector(".add").addEventListener("click", () => {
 		document.querySelector(".modal").style.display = "none";
 	});
 });
+
+window.onclick = function(event){
+ 		if (event.target == document.querySelector(".modal")){
+   			document.querySelector(".modal").style.display = "none";
+  		}
+	}	
+/*
+for (let i = 0; i < list.length; i++){
+    (function(index){
+        list[i].onclick = function(){
+            document.querySelector(".modal-content").innerText = "";
+			document.querySelector(".modal-content").innerHTML = list[i];
+  			document.querySelector(".modal").style.display = "block";
+  			console.log(list);
+    	} 
+	})(i);
+}
+*/

@@ -13,6 +13,46 @@ font-family: 'Indie Flower', cursive;
   If you need some CSS for any reason you can put it here.
 */
 
+body{
+  margin:auto;
+  background-color: black;
+  background-image: url(https://i.pinimg.com/originals/f8/16/3c/f8163c153c324dabdbe994716468e39b.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  color: red;
+  font-family: 'Creepster', cursive;
+  font-size: 2em;
+  font-weight: lighter;
+  text-align: center;
+}
+h2{
+  font-size: 2.5em;
+}
+
+ul{
+	list-style-type: none;
+}
+
+li{
+	border-style: solid;
+}
+
+li > p{
+	text-align: left;
+}
+
+.container{
+  width: 80%;
+  height: 90%;
+  text-align: center;
+  margin:0.3em;
+  margin-left: 4em;
+  //background-color: white;
+ // border: 1px solid black;
+  opacity: 0.5;
+ }
 
 .modal {
   display: none;
@@ -30,7 +70,7 @@ font-family: 'Indie Flower', cursive;
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; 
+  margin: 15% auto;
   padding: 20px;
   border: 5px solid black;
   width: 50%;
@@ -50,28 +90,9 @@ font-family: 'Indie Flower', cursive;
   cursor: pointer;
 }
 
-body{
-  margin:auto;
-  background-color: black;
-  background-image: url(https://i.pinimg.com/originals/f8/16/3c/f8163c153c324dabdbe994716468e39b.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  color:black;
-  font-family: 'Creepster', cursive;
-  font-size: 2em;
-  font-weight: lighter;
-  text-align: center;
+#logo{
+  position : absolute;
+  top : -100px;
+  right: 30px;
 }
 
-#wrapper{
-  width: 80%;
-  height: 90%;
-  text-align: center;
-  margin:0.3em;
-  margin-left: 4em;
-  background-color: white;
-  border: 1px solid black;
-  opacity: 0.4;
- }
