@@ -39,16 +39,16 @@ function addItem(name, plan){
 				document.querySelector(".modal-content").innerHTML = div.innerText;
 	  			document.querySelector(".modal").style.display = "block";
 	  			console.log(list);
-    		} 
+    		}
 		})(i);
 	}
 }
 
 document.querySelector(".add").addEventListener("click", () => {
 	document.querySelector(".modal-content").innerText = "";
-	document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your name:</p><input type="text" name="test" class="name" placeholder="Enter Name"></input><p>Your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
+	document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your idea:</p><input type="text" name="test" class="name" placeholder="Enter idea"></input><p>Description of your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
 	document.querySelector(".modal").style.display = "block";
-	
+
 	document.querySelector(".submit").addEventListener("click", () => {
 		plansArray.push(document.querySelector(".plan").value);
 		window.localStorage.setItem('plans', JSON.stringify(plansArray));
@@ -63,7 +63,7 @@ window.onclick = function(event){
  		if (event.target == document.querySelector(".modal")){
    			document.querySelector(".modal").style.display = "none";
   		}
-	}	
+	}
 /*
 for (let i = 0; i < list.length; i++){
     (function(index){
@@ -72,7 +72,7 @@ for (let i = 0; i < list.length; i++){
 			document.querySelector(".modal-content").innerHTML = list[i];
   			document.querySelector(".modal").style.display = "block";
   			console.log(list);
-    	} 
+    	}
 	})(i);
 }
 */
