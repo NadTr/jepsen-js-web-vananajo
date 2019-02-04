@@ -12,11 +12,50 @@ import "./style.scss";
   Put the JavaScript code you want below.
 */
 
-window.localStorage.clear();
-
 let namesArray = [];
 let plansArray = [];
 let list = [];
+
+console.log(namesArray);
+
+for (let i = 0; i < namesArray.length; i++) {
+	let li = document.createElement("li");
+	let h2 = document.createElement("h2");
+	let p = document.createElement("p");
+	let h2Content = document.createTextNode(JSON.parse("[" + window.localStorage.getItem('names')+ "]")[i]);
+	let pContent = document.createTextNode(JSON.parse("[" + window.localStorage.getItem('plans') + "]")[i]);
+	h2.appendChild(h2Content);
+	p.appendChild(pContent);
+	li.appendChild(h2);
+	li.appendChild(p);
+	document.querySelector(".list").appendChild(li);
+	list.push(li);
+}
+
+for (let i = 0; i < list.length; i++){
+    (function(index){
+        list[i].onclick = function(){
+            document.querySelector(".modal-content").innerText = "";
+            let div = document.createElement("div");
+            let text = document.createTextNode(list[i].innerHTML);
+            let comment = document.createElement("BUTTON");
+            let textArea = document.createElement("TEXTAREA");
+            textArea.class = "comment";
+            let commentText = document.createTextNode("Comment");
+            comment.appendChild(commentText);
+            div.appendChild(text);
+			document.querySelector(".modal-content").innerHTML = div.innerText;
+			document.querySelector(".modal-content").appendChild(textArea);
+            document.querySelector(".modal-content").appendChild(comment);
+  			document.querySelector(".modal").style.display = "block";	
+  			comment.addEventListener("click", () => {
+  				commentsArray.push(textArea.value);
+  				window.localStorage.setItem( 'Comments' + i, JSON.stringify(commentsArray));
+  			});
+
+		} 
+	})(i);
+}
 
 function addItem(name, plan){	
 	let li = document.createElement("li");
