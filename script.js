@@ -18,7 +18,7 @@ let namesArray = [];
 let plansArray = [];
 let list = [];
 
-function addItem(name, plan){	
+function addItem(name, plan){
 	let li = document.createElement("li");
 	let h2 = document.createElement("h2");
 	let p = document.createElement("p");
@@ -46,17 +46,17 @@ function addItem(name, plan){
 				document.querySelector(".modal-content").innerHTML = div.innerText;
 				document.querySelector(".modal-content").appendChild(textArea);
 	            document.querySelector(".modal-content").appendChild(comment);
-	  			document.querySelector(".modal").style.display = "block";	
+	  			document.querySelector(".modal").style.display = "block";
 	  			comment.addEventListener("click", () => {
 	  				commentsArray.push(textArea.value);
 	  				window.localStorage.setItem( 'Comments' + i, JSON.stringify(commentsArray));
 	  			});
 
-    		} 
+    		}
     	})(i);
     }
 }
-	
+
 // Ouverture de la fenêtre modale de création d'idée
 
 document.querySelector(".add").addEventListener("click", () => {
@@ -82,6 +82,18 @@ window.onclick = function(event){
   		}
 	}
 
+// Suppression d'une idée (name et plan) et de tous ses commentaires
+/*
+document.querySelector(".delete").addEventListener("click", () => {
+	deleteIdea = window.confirm("Do you really want to delete this idea?");
+if (deleteIdea){
+index=this.rowIndex; //ou .index?
+storage.removeItem("names"+index);
+storage.removeItem("plans"+index);
+storage.removeItem("comments"+index);
+}
+	});
+*/
 
 	/*TO DO: ajouter ces boutons à chaque li
 	<div id ="buttons">
