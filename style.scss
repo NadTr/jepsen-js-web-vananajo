@@ -43,8 +43,9 @@ li{
   margin: 3px;
 }
 
-li > p{
+.list > li > p{
 	text-align: left;
+  display: none;
 }
 
 .container{
