@@ -17,7 +17,7 @@ window.localStorage.clear();
 let namesArray = [];
 let plansArray = [];
 
-function addItem(name, plan){	
+function addItem(name, plan){
 	let li = document.createElement("li");
 	let h2 = document.createElement("h2");
 	let p = document.createElement("p");
@@ -29,6 +29,8 @@ function addItem(name, plan){
 	li.appendChild(p);
 	document.querySelector(".list").appendChild(li);
 	let commentsArray = [];
+	let showdown  = require('showdown');
+  let converter = new showdown.Converter();
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
 	        list[i].onclick = function(){
@@ -43,17 +45,17 @@ function addItem(name, plan){
 				document.querySelector(".modal-content").innerHTML = div.innerText;
 				document.querySelector(".modal-content").appendChild(textArea);
 	            document.querySelector(".modal-content").appendChild(comment);
-	  			document.querySelector(".modal").style.display = "block";	
+	  			document.querySelector(".modal").style.display = "block";
 	  			comment.addEventListener("click", () => {
 	  				commentsArray.push(textArea.value);
 	  				window.localStorage.setItem( 'Comments' + i, JSON.stringify(commentsArray));
 	  			});
 
-    		} 
+    		}
     	})(i);
     }
 }
-	
+
 
 document.querySelector(".add").addEventListener("click", () => {
 	document.querySelector(".modal-content").innerText = "";
