@@ -82,6 +82,10 @@ li{
   border-radius : 10px;
 }
 
+.modal-content > p{
+  text-align: left;
+}
+
 .close {
   color: #aaa;
   float: right;
@@ -100,4 +104,8 @@ li{
   position : absolute;
   top : -100px;
   left: 30px;
+}
+
+.comment{
+  width: 50%;
 }

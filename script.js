@@ -16,6 +16,7 @@ window.localStorage.clear();
 
 let namesArray = [];
 let plansArray = [];
+let list = [];
 
 function addItem(name, plan){	
 	let li = document.createElement("li");
@@ -47,6 +48,7 @@ function addItem(name, plan){
 	            let text = document.createTextNode(list[i].innerHTML);
 				let comment = document.createElement("BUTTON");
 	            let textArea = document.createElement("TEXTAREA");
+	            textArea.class = "comment";
 	            let commentText = document.createTextNode("Comment");
 	            comment.appendChild(commentText);
 	            div.appendChild(text);
@@ -63,6 +65,7 @@ function addItem(name, plan){
 	}(i);
 }
 	
+// Ouverture de la fenêtre modale de création d'idée
 
 document.querySelector(".add").addEventListener("click", () => {
 	document.querySelector(".modal-content").innerText = "";
@@ -78,6 +81,8 @@ document.querySelector(".add").addEventListener("click", () => {
 		document.querySelector(".modal").style.display = "none";
 	});
 });
+
+// Fermeture de la fenêtre modale lorqu'on clique en dehors
 
 window.onclick = function(event){
  		if (event.target == document.querySelector(".modal")){
