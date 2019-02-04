@@ -19,20 +19,45 @@ let plansArray = [];
 
 function addItem(name, plan){
 	let li = document.createElement("li");
-	let h1 = document.createElement("h1");
+	let h2 = document.createElement("h2");
 	let p = document.createElement("p");
-	let h1Content = document.createTextNode(name);
+	let h2Content = document.createTextNode(name);
 	let pContent = document.createTextNode(plan);
-	h1.appendChild(h1Content);
+	h2.appendChild(h2Content);
 	p.appendChild(pContent);
-	li.appendChild(h1);
+	li.appendChild(h2);
 	li.appendChild(p);
 	document.querySelector(".list").appendChild(li);
+	for (let i = 0; i < list.length; i++){
+	    (function(index){
+	        list[i].onclick = function(){
+	            document.querySelector(".modal-content").innerText = "";
+	            let div = document.createElement("div");
+	            let text = document.createTextNode(list[i].innerHTML);
+	            let comment = document.createElement("BUTTON");
+	            let textArea = document.createElement("TEXTAREA");
+	            let commentText = document.createTextNode("Comment");
+	            comment.appendChild(commentText);
+	            div.appendChild(text);
+				document.querySelector(".modal-content").innerHTML = div.innerText;
+				document.querySelector(".modal-content").appendChild(textArea);
+	            document.querySelector(".modal-content").appendChild(comment);
+	  			document.querySelector(".modal").style.display = "block";
+	  			comment.addEventListener("click", () => {
+	  				let comments = eval("comments" + i + "= []");
+	  				window.localStorage.setItem( comments + i, textArea.value);
+	  			});
+    		}
+
+	  			console.log(list);
+    		}
+		})(i);
+	}
 }
 
 document.querySelector(".add").addEventListener("click", () => {
 	document.querySelector(".modal-content").innerText = "";
-	document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your name:</p><input type="text" name="test" class="name" placeholder="Enter Name"></input><p>Your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
+	document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your idea:</p><input type="text" name="test" class="name" placeholder="Enter idea"></input><p>Description of your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
 	document.querySelector(".modal").style.display = "block";
 
 	document.querySelector(".submit").addEventListener("click", () => {
@@ -44,3 +69,24 @@ document.querySelector(".add").addEventListener("click", () => {
 		document.querySelector(".modal").style.display = "none";
 	});
 });
+<<<<<<< HEAD
+=======
+
+window.onclick = function(event){
+ 		if (event.target == document.querySelector(".modal")){
+   			document.querySelector(".modal").style.display = "none";
+  		}
+	}
+/*
+for (let i = 0; i < list.length; i++){
+    (function(index){
+        list[i].onclick = function(){
+            document.querySelector(".modal-content").innerText = "";
+			document.querySelector(".modal-content").innerHTML = list[i];
+  			document.querySelector(".modal").style.display = "block";
+  			console.log(list);
+    	}
+	})(i);
+}
+*/
+>>>>>>> master
