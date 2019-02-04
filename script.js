@@ -11,19 +11,20 @@ import "./style.scss";
 /*
   Put the JavaScript code you want below.
 */
-
-let namesArray = [];
-let plansArray = [];
+window.localStorage.setItem('names', JSON.stringify("José"));
+window.localStorage.setItem('plans', JSON.stringify("José"));
+let namesArray = window.localStorage.getItem('names');
+let plansArray = window.localStorage.getItem('plans');
 let list = [];
 
-console.log(namesArray);
+console.log(JSON.parse(window.localStorage.getItem('names')));
 
 for (let i = 0; i < namesArray.length; i++) {
 	let li = document.createElement("li");
 	let h2 = document.createElement("h2");
 	let p = document.createElement("p");
-	let h2Content = document.createTextNode(JSON.parse("[" + window.localStorage.getItem('names')+ "]")[i]);
-	let pContent = document.createTextNode(JSON.parse("[" + window.localStorage.getItem('plans') + "]")[i]);
+	let h2Content = document.createTextNode(namesArray[i]);
+	let pContent = document.createTextNode(plansArray[i]);
 	h2.appendChild(h2Content);
 	p.appendChild(pContent);
 	li.appendChild(h2);
@@ -107,7 +108,7 @@ document.querySelector(".add").addEventListener("click", () => {
 		plansArray.push(document.querySelector(".plan").value);
 		window.localStorage.setItem('plans', JSON.stringify(plansArray));
 		namesArray.push(document.querySelector(".name").value);
-		window.localStorage.setItem('names', JSON.stringify(namesArray))
+		window.localStorage.setItem('names', JSON.stringify(namesArray));
 		addItem(document.querySelector(".name").value, document.querySelector(".plan").value);
 		document.querySelector(".modal").style.display = "none";
 	});
