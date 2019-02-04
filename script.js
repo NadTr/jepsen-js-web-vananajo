@@ -16,19 +16,17 @@ window.localStorage.clear();
 
 let namesArray = [];
 let plansArray = [];
-let list = [];
 
 function addItem(name, plan){
 	let li = document.createElement("li");
-	let h2 = document.createElement("h2");
+	let h1 = document.createElement("h1");
 	let p = document.createElement("p");
-	let h2Content = document.createTextNode(name);
+	let h1Content = document.createTextNode(name);
 	let pContent = document.createTextNode(plan);
-	h2.appendChild(h2Content);
+	h1.appendChild(h1Content);
 	p.appendChild(pContent);
-	li.appendChild(h2);
+	li.appendChild(h1);
 	li.appendChild(p);
-	list.push(li);
 	document.querySelector(".list").appendChild(li);
 	let editButton = document.createElement("button");
 	let deleteButton = document.createElement("button");
@@ -73,7 +71,7 @@ function addItem(name, plan){
 
 document.querySelector(".add").addEventListener("click", (e) => {
 	document.querySelector(".modal-content").innerText = "";
-	document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your idea:</p><input type="text" name="test" class="name" placeholder="Enter idea"></input><p>Description of your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
+	document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your name:</p><input type="text" name="test" class="name" placeholder="Enter Name"></input><p>Your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
 	document.querySelector(".modal").style.display = "block";
 
 	document.querySelector(".submit").addEventListener("click", () => {
