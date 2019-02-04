@@ -1,3 +1,4 @@
+
 // import some polyfill to ensure everything works OK
 import "babel-polyfill"
 
@@ -15,7 +16,6 @@ window.localStorage.clear();
 
 let namesArray = [];
 let plansArray = [];
-let list = [];
 
 function addItem(name, plan){	
 	let li = document.createElement("li");
@@ -27,7 +27,6 @@ function addItem(name, plan){
 	p.appendChild(pContent);
 	li.appendChild(h2);
 	li.appendChild(p);
-	list.push(li);
 	document.querySelector(".list").appendChild(li);
 	let commentsArray = [];
 	for (let i = 0; i < list.length; i++){
@@ -45,15 +44,16 @@ function addItem(name, plan){
 				document.querySelector(".modal-content").appendChild(textArea);
 	            document.querySelector(".modal-content").appendChild(comment);
 	  			document.querySelector(".modal").style.display = "block";	
-	  			
 	  			comment.addEventListener("click", () => {
 	  				commentsArray.push(textArea.value);
 	  				window.localStorage.setItem( 'Comments' + i, JSON.stringify(commentsArray));
 	  			});
+
     		} 
     	})(i);
-	}
-} 
+    }
+}
+	
 
 document.querySelector(".add").addEventListener("click", () => {
 	document.querySelector(".modal-content").innerText = "";
@@ -75,7 +75,16 @@ window.onclick = function(event){
    			document.querySelector(".modal").style.display = "none";
   		}
 	}
-/*
+
+
+	/*TO DO: ajouter ces boutons à chaque li
+	<div id ="buttons">
+		<button id="edit"><i class="fas fa-pencil-alt"></i>Edit</button>
+		<button id="delete"><i class="fas fa-trash-alt"></i>Delete</button>
+</div>
+
+
+
 for (let i = 0; i < list.length; i++){
     (function(index){
         list[i].onclick = function(){
