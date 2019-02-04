@@ -39,7 +39,7 @@ ul{
 }
 
 li{
-	border-style: solid;
+  border: 2px solid black;
   margin: 3px;
 }
 li:hover {
@@ -80,7 +80,7 @@ li:hover {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
-  border: 5px solid black;
+  border: 3px solid black;
   width: 50%;
 }
 
