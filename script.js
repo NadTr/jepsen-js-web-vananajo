@@ -43,15 +43,15 @@ function addItem(name, plan){
 				document.querySelector(".modal-content").innerHTML = div.innerText;
 				document.querySelector(".modal-content").appendChild(textArea);
 	            document.querySelector(".modal-content").appendChild(comment);
-	  			document.querySelector(".modal").style.display = "block";	
+	  			document.querySelector(".modal").style.display = "block";
 	  			comment.addEventListener("click", () => {
 	  				let comments = eval("comments" + i + "= []");
 	  				window.localStorage.setItem( comments + i, textArea.value);
 	  			});
-    		} 
+    		}
 
 	  			console.log(list);
-    		}
+
 		})(i);
 	}
 }
@@ -76,6 +76,15 @@ window.onclick = function(event){
    			document.querySelector(".modal").style.display = "none";
   		}
 	}
+
+
+	/*TO DO: ajouter ces boutons à chaque li
+	<div id ="buttons">
+		<button id="edit"><i class="fas fa-pencil-alt"></i>Edit</button>
+		<button id="delete"><i class="fas fa-trash-alt"></i>Delete</button>
+</div>
+
+
 /*
 for (let i = 0; i < list.length; i++){
     (function(index){
