@@ -49,9 +49,8 @@ function addItem(name, plan){
 	  			});
     		}
 
-	  			console.log(list);
 
-		})(i);
+		}) (i);
 	}
 }
 
@@ -69,8 +68,6 @@ document.querySelector(".add").addEventListener("click", () => {
 		document.querySelector(".modal").style.display = "none";
 	});
 });
-<<<<<<< HEAD
-=======
 
 window.onclick = function(event){
  		if (event.target == document.querySelector(".modal")){
@@ -86,7 +83,7 @@ window.onclick = function(event){
 </div>
 
 
-/*
+
 for (let i = 0; i < list.length; i++){
     (function(index){
         list[i].onclick = function(){
@@ -98,4 +95,3 @@ for (let i = 0; i < list.length; i++){
 	})(i);
 }
 */
->>>>>>> master
