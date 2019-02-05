@@ -22,8 +22,8 @@ body{
   background-size: cover;
   font-size: 1.2em;
   text-align: center;
+  overflow-x: hidden;
 }
-
 h3{
 
   color: #971010;
@@ -51,7 +51,7 @@ li{
     display: none;
   }
 }
-li:hover {
+.list > li:hover {
   font-size: 10pt;
   color:white;
   cursor: pointer;
@@ -61,7 +61,19 @@ li:hover {
 	text-align: left;
   display: none;
 }
+.edit{
+  position: relative;
+  right: -3em;
+  background-color: rgba(254, 138, 52,1);
+  margin: .3em;
 
+}
+.delete{
+  position: relative;
+  right: -3em;
+  background-color: rgba(249, 56, 44,1);
+  margin: .3em;
+}
 .container{
   width: 80%;
   text-align: center;
@@ -94,7 +106,7 @@ li:hover {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
-  border: 5px solid black;
+  border: 3px solid black;
   width: 50%;
   border-radius : 10px;
 }
@@ -118,10 +130,30 @@ li:hover {
 }
 //Animation : names arrive
 @keyframes nameMove {
-    0% {  color: rgba(254, 13, 13,0);}
-    30% {color: rgba(254, 13, 13,1); }
-    90% {color: rgba(254, 13, 13,1);   }
-    100% {color: rgba(254, 13, 13,0);   }
+    0% {  color: rgba(254, 13, 13,0);
+      position : absolute;
+        top : -33.3em;
+        left: 3.6em;}
+    15% {color: rgba(254, 13, 13,0);
+       position : absolute;
+        top : -3.3em;
+        left: 3.6em;}
+    30% {color: rgba(254, 13, 13,1);
+      position : absolute;
+        top : -3.3em;
+        left: 3.6em;}
+    80% {color: rgba(254, 13, 13,1);
+      position : absolute;
+        top : -3.3em;
+        left: 3.6em;}
+    90% {color: rgba(254, 13, 13,0);
+        position : absolute;
+        top : -3.3em;
+        left: 3.6em;}
+    100% {color: rgba(254, 13, 13,0);
+      position : absolute;
+        top : -33.3em;
+        left: 3.6em;}
 }
 table{
   text-align: left;
@@ -129,30 +161,28 @@ table{
   font-family: 'Creepster', cursive;
   font-size: 1.2em;
   animation-name: nameMove;
-  animation-duration: 5s;
+  animation-duration: 6s;
   position : absolute;
-    top : -3.3em;
+    top : -33.3em;
     left: 3.6em;
   color: rgba(0,0,0,0);
-
-
 }
 
 //Animation color lettres
 @keyframes colorLettre {
-    0% {  color: rgba(254, 254, 254,0);
+    0% {  color: rgba(254, 13, 13,1);
       font-size: 2.5em;
   }
-  10% {color: rgba(254, 254, 254,1);
+  10% {color: rgba(254, 13, 13,1);
     font-size: 4em;
 }
-30% {color: rgba(13, 254, 254,1);
+30% {color: rgba(254, 130, 0,1);
   font-size: 4em;
 }
 80% {color: rgba(254, 254, 13,1);
   font-size: 4em;
 }
-    90% {color: rgba(13, 254, 13,1);
+    90% {color: rgba(254, 13, 13,0);
       font-size: 2.5em;
    }
     100% {color: rgba(254, 13, 13,0);
@@ -162,6 +192,7 @@ table{
 .letters{
   animation-name: colorLettre;
   animation-duration: 5s;
+  animation-delay: 1s;
   color: rgba(0,0,0,0);
   font-size: 2.5em;
 
