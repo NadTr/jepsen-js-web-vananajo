@@ -48,14 +48,48 @@ finally{
 	        list[i].onclick = function(){
 	            document.querySelector(".modal-content").innerText = "";
 	            let div = document.createElement("div");
-	            let text = document.createTextNode(list[i].innerHTML);
+	            let editButton = document.createElement("BUTTON");
+				let deleteButton = document.createElement("BUTTON");
+				let textEdit = document.createTextNode("Edit");
+				let textDelete = document.createTextNode("Delete");
+				editButton.appendChild(textEdit);
+				deleteButton.appendChild(textDelete);
+	            let h2 = document.createElement("h2");
+				let h2Text = document.createTextNode(namesArray[i]);
+				h2.appendChild(h2Text);
+	            let text = document.createTextNode(plansArray[i]);
 	            let comment = document.createElement("BUTTON");
-	            let textArea = document.createElement("TEXTAREA");
+				let textArea = document.createElement("TEXTAREA");
 	            textArea.class = "comment";
 	            let commentText = document.createTextNode("Comment");
 	            comment.appendChild(commentText);
-	            div.appendChild(text);
-				document.querySelector(".modal-content").innerHTML = div.innerText;
+	            div.appendChild(h2);
+            	div.appendChild(text);
+	            document.querySelector(".modal-content").appendChild(editButton);
+				document.querySelector(".modal-content").appendChild(deleteButton);
+				document.querySelector(".modal-content").appendChild(div);
+				
+
+
+				editButton.addEventListener("click", () => {
+					document.querySelector(".modal-content").innerText = "";
+					let planEdit = document.createElement("textarea");
+					document.querySelector(".modal-content").appendChild(planEdit);
+					planEdit.value = plansArray[i];
+					let submitEdit = document.createElement("BUTTON");
+					let submitEditText = document.createTextNode("Submit");
+					submitEdit.appendChild(submitEditText);
+					document.querySelector(".modal-content").appendChild(submitEdit);
+
+
+					submitEdit.addEventListener("click", () => {
+						plansArray[i] = planEdit.value;
+						window.localStorage.setItem('plans', JSON.stringify(plansArray));
+						document.querySelector(".modal").style.display = "none";
+						document.location.reload(true);
+					});	
+				});	
+
 				document.querySelector(".modal-content").appendChild(textArea);
 	            document.querySelector(".modal-content").appendChild(comment);
 	  			document.querySelector(".modal").style.display = "block";
@@ -95,16 +129,6 @@ finally{
 		li.appendChild(h2);
 		li.appendChild(p);
 		document.querySelector(".list").appendChild(li);
-		let editButton = document.createElement("button");
-		let deleteButton = document.createElement("button");
-		let textEdit = document.createTextNode("Edit");
-		let textDelete = document.createTextNode("Delete");
-		editButton.appendChild(textEdit);
-		deleteButton.appendChild(textDelete);
-		editButton.className = "edit";
-		deleteButton.className = "delete"
-		h2.appendChild(editButton);
-		h2.appendChild(deleteButton);
 		list.push(li);
 		let commentsArray = [];
 		let showdown  = require('showdown');
@@ -112,17 +136,48 @@ finally{
 		for (let i = 0; i < list.length; i++){
 		    (function(index){
 		        list[i].onclick = function(){
-		        	console.log("test");
 		            document.querySelector(".modal-content").innerText = "";
 		            let div = document.createElement("div");
-		            let text = document.createTextNode(list[i].innerHTML);
+		            let editButton = document.createElement("BUTTON");
+					let deleteButton = document.createElement("BUTTON");
+					let textEdit = document.createTextNode("Edit");
+					let textDelete = document.createTextNode("Delete");
+					editButton.appendChild(textEdit);
+					deleteButton.appendChild(textDelete);
+					let h2 = document.createElement("h2");
+					let h2Text = document.createTextNode(namesArray[i]);
+					h2.appendChild(h2Text);
+		            let text = document.createTextNode(plansArray[i]);
 		            let comment = document.createElement("BUTTON");
 					let textArea = document.createElement("TEXTAREA");
 		            textArea.class = "comment";
 		            let commentText = document.createTextNode("Comment");
 		            comment.appendChild(commentText);
-		            div.appendChild(text);
-					document.querySelector(".modal-content").innerHTML = div.innerText;
+		            div.appendChild(h2);
+	            	div.appendChild(text);
+					document.querySelector(".modal-content").appendChild(editButton);
+					document.querySelector(".modal-content").appendChild(deleteButton);
+					document.querySelector(".modal-content").appendChild(div);
+
+					editButton.addEventListener("click", () => {
+						document.querySelector(".modal-content").innerText = "";
+						let planEdit = document.createElement("textarea");
+						document.querySelector(".modal-content").appendChild(planEdit);
+						planEdit.value = plansArray[i];
+						let submitEdit = document.createElement("BUTTON");
+						let submitEditText = document.createTextNode("Submit");
+						submitEdit.appendChild(submitEditText);
+						document.querySelector(".modal-content").appendChild(submitEdit);
+
+
+						submitEdit.addEventListener("click", () => {
+							plansArray[i] = planEdit.value;
+							window.localStorage.setItem('plans', JSON.stringify(plansArray));
+							document.querySelector(".modal").style.display = "none";
+							document.location.reload(true);
+						});	
+					});	
+
 					document.querySelector(".modal-content").appendChild(textArea);
 		            document.querySelector(".modal-content").appendChild(comment);
 		  			document.querySelector(".modal").style.display = "block";
@@ -175,125 +230,10 @@ finally{
 	}
 }
 
-/*
 
-}catch(err){
-	for (let i = 0; i < list.length; i++){
-	    (function(index){
-	        list[i].onclick = function(){
-	            document.querySelector(".modal-content").innerText = "";
-	            let div = document.createElement("div");
-	            let text = document.createTextNode(list[i].innerHTML);
-	            let comment = document.createElement("BUTTON");
-	            let textArea = document.createElement("TEXTAREA");
-	            textArea.class = "comment";
-	            let commentText = document.createTextNode("Comment");
-	            comment.appendChild(commentText);
-	            div.appendChild(text);
-				document.querySelector(".modal-content").innerHTML = div.innerText;
-				document.querySelector(".modal-content").appendChild(textArea);
-	            document.querySelector(".modal-content").appendChild(comment);
-	  			document.querySelector(".modal").style.display = "block";
-	  			let commentsArray = [];
-	  			let commentsList = document.createElement("ul");
-	  			comment.addEventListener("click", () => {
-	  				commentsArray.push(textArea.value);
-	  				window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
-	  				for (let j = 0; j < window.localStorage.getItem('comments' + i).length; j++) {
-	  					let commentary = document.createElement("li");
-	  					let commentaryText = document.createTextNode(JSON.parse(window.localStorage.getItem('comments' + i))[j]);
-	  					commentary.appendChild(commentaryText);
-	  					commentsList.appendChild(commentary);
-	  					document.querySelector(".modal-content").appendChild(commentsList);
-	  				}
-	  			});
-			}
-		})(i);
-	}
-	function addItem(name, plan){
-		let li = document.createElement("li");
-		let h2 = document.createElement("h2");
-		let p = document.createElement("p");
-		let h2Content = document.createTextNode(name);
-		let pContent = document.createTextNode(plan);
-		h2.appendChild(h2Content);
-		p.appendChild(pContent);
-		li.appendChild(h2);
-		li.appendChild(p);
-		document.querySelector(".list").appendChild(li);
-		let editButton = document.createElement("button");
-		let deleteButton = document.createElement("button");
-		let textEdit = document.createTextNode("Edit");
-		let textDelete = document.createTextNode("Delete");
-		editButton.appendChild(textEdit);
-		deleteButton.appendChild(textDelete);
-		editButton.className = "edit";
-		deleteButton.className = "delete"
-		h2.appendChild(editButton);
-		h2.appendChild(deleteButton);
-		list.push(li);
-		let commentsArray = [];
-		let showdown  = require('showdown');
-	  	let converter = new showdown.Converter();
-		for (let i = 0; i < list.length; i++){
-		    (function(index){
-		        list[i].onclick = function(){
-		        	console.log("test");
-		            document.querySelector(".modal-content").innerText = "";
-		            let div = document.createElement("div");
-		            let text = document.createTextNode(list[i].innerHTML);
-		            let comment = document.createElement("BUTTON");
-					let textArea = document.createElement("TEXTAREA");
-					let p = document.createElement("p");
-					document.querySelector(".modal-content").appendChild(p);
-		            textArea.class = "comment";
-		            let commentText = document.createTextNode("Comment");
-		            comment.appendChild(commentText);
-		            div.appendChild(text);
-					document.querySelector(".modal-content").innerHTML = div.innerText;
-					document.querySelector(".modal-content").appendChild(textArea);
-		            document.querySelector(".modal-content").appendChild(comment);
-		  			document.querySelector(".modal").style.display = "block";
-		  			comment.addEventListener("click", () => {
-		  				commentsArray.push(textArea.value);
-		  				window.localStorage.setItem( 'Comments' + i, JSON.stringify(commentsArray));
-		  			});
-	    		}
-	    	})(i);
-	    }
-	}
-	// Ouverture de la fenêtre modale de création d'idée
-	document.querySelector(".add").addEventListener("click", () => {
-		document.querySelector(".modal-content").innerText = "";
-		document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your name:</p><input type="text" name="test" class="name" placeholder="Enter Name"></input><p>Your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
-		document.querySelector(".modal").style.display = "block";
-		document.querySelector(".submit").addEventListener("click", () => {
-			document.querySelector(".modal").style.display = "none";
-			plansArray.push(document.querySelector(".plan").value);
-			window.localStorage.setItem('plans', JSON.stringify(plansArray));
-			namesArray.push(document.querySelector(".name").value);
-			window.localStorage.setItem('names', JSON.stringify(namesArray));
-			addItem(document.querySelector(".name").value, document.querySelector(".plan").value);
-		});
-	});
-	// Fermeture de la fenêtre modale lorqu'on clique en dehors
-	window.onclick = function(event){
- 		if (event.target == document.querySelector(".modal")){
-   			document.querySelector(".modal").style.display = "none";
-  		}
-	}
-}
-<<<<<<< HEAD
 
-=======
-*/
->>>>>>> 020e455552b27d6143c16d6e0bc897559735b29e
-/*
-	let edit = document.querySelector(".edit");
-	edit.addEventListener("click", function(){
 
-	});
-*/
+
 
 
 // Suppression d'une idée (name et plan) et de tous ses commentaires
