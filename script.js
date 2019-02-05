@@ -14,15 +14,15 @@ import "./style.scss";
 
 
 let list = [];
-let namesArray;
-let plansArray;
+let namesArray = [];
+let plansArray = [];
 
 try{
 	namesArray = JSON.parse(localStorage.getItem('names'));
 	plansArray = JSON.parse(localStorage.getItem('plans'));
 	console.log(namesArray.length);
-	console.log(plansArray)
-	console.log(namesArray)
+	console.log(plansArray);
+	console.log(namesArray);
 	for (let i = 0; i < namesArray.length; i++){
 		let li = document.createElement("li");
 		let h2 = document.createElement("h2");
@@ -37,10 +37,6 @@ try{
 		document.querySelector(".list").appendChild(li);
 		list.push(li);
 	}
-}catch(err){
-	
-}
-finally{
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
 	        list[i].onclick = function(){
@@ -147,9 +143,6 @@ finally{
    			document.querySelector(".modal").style.display = "none";
   		}
 	}
-}	
-
-/*
 }catch(err){
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
@@ -265,7 +258,6 @@ finally{
 	}
 }
 
-*/
 /*
 	let edit = document.querySelector(".edit");
 	edit.addEventListener("click", function(){
