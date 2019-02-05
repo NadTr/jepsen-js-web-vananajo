@@ -37,7 +37,9 @@ try{
 		document.querySelector(".list").appendChild(li);
 		list.push(li);
 	}
-}catch(err){}
+}catch(err){
+	
+}
 finally{
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
