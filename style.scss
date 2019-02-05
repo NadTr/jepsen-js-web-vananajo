@@ -24,6 +24,7 @@ body{
   text-align: center;
 }
 h3{
+
   color: #971010;
   font-family: 'Creepster', cursive;
   font-size: 2.8em;
@@ -65,6 +66,7 @@ li:hover {
   text-align: center;
   margin:0.3em;
   margin:auto;
+  margin-bottom: 5em;
   background-color: rgba(255,255,255,0.2);
 //  opacity:0.5;
  // border: 1px solid black;
@@ -113,19 +115,196 @@ li:hover {
   text-decoration: none;
   cursor: pointer;
 }
-
-#logo{
-  position : absolute;
-  top : -100px;
-  left: 30px;
+//Animation : names arrive
+@keyframes nameMove {
+    0% {position : absolute;
+      top : -100em;
+      left: 3.6em;
+    color: rgba(254, 13, 13,1);
 }
+    30% {position : absolute;
+      top : -3.3em;
+      left: 3.6em;
+    color: rgba(254, 13, 13,1);
+    }
+    100% {
+      position : absolute;
+      top : -3.3em;
+      left: 3.6em;
+      color: rgba(254, 13, 13,0);
+
+    }
+}
+table{
+  text-align: left;
+  color:black;
+  font-family: 'Creepster', cursive;
+  font-size: 1.2em;
+  animation-name: nameMove;
+  animation-duration: 5s;
+  position : absolute;
+  top : -100em;
+  left: 7em;
+  color: rgba(0,0,0,0);
+
+
+}
+//Animation Logo move Left
+@keyframes logoMove {
+  0% {position : absolute;
+    top : -5.3em;
+    left: 0.5em;}
+  25% {position : absolute;
+    top : -5.3em;
+    left: -5.5em;
+  color: rgba(0,0,0,0.6);
+  }
+  100% {position : absolute;
+    top : -5.3em;
+    left: -5.5em;
+    color: rgba(0,0,0,1);
+    }
+}
+#logo{
+  max-height: 25vh;
+max-width: 22%;
+  position : absolute;
+  top : -5.3em;
+  left: 0.5em;
+//animation with our names
+  animation-name: logoMove;
+  animation-duration: 5s;
+}
+
+
 
 .comment{
   width: 50%;
 }
+// Animation: pinguin bounce
+/*
+
+*/
+
+
+@keyframes bounce {
+0% {position : relative;
+    bottom: 0;
+  left: -45%;
+  }
+5% {position : relative;
+    bottom: 6vh;
+  left: -40%;
+ }
+10% {position : relative;
+    bottom: 0;
+  left: -35%;
+  }
+  15% {position : relative;
+  bottom:4vh;
+    left: -31%;
+    }
+  18% {position : relative;
+      bottom: 0;
+    left: -28%;
+     }
+  21% {position : relative;
+  bottom: 6vh;
+    left: -25%;
+    }
+  24% {position : relative;
+      bottom: 0;
+    left: -22%;
+    }
+  27% {position : relative;
+  bottom:4vh;
+    left: -17%;
+   }
+  30% {position : relative;
+      bottom: 0;
+    left: -13%;
+    }
+  35% {position : relative;
+  bottom: 2vh;
+    left: -10%;
+    }
+  40% {position : relative;
+     bottom: 0;
+   left: -5%;
+  }
+  43% {position : relative;
+  bottom: 8vh;
+    left: 0;
+     }
+ 46% {position : relative;
+      bottom: 0;
+   left: 5%;
+   }
+ 49% {position : relative;
+ bottom: 5vh;
+   left: 10%;
+  }
+  52% {position : relative;
+     bottom: 0;
+  left: 17%;
+  }
+  55% {position : relative;
+  bottom: 4vh;
+      left: 20%;
+   }
+   60% {position : relative;
+      bottom: 0;
+   left: 23%;
+   }
+   65% {position : relative;
+   bottom: 9vh;
+    left: 27%;
+  }
+  70% {position : relative;
+     bottom: 0;
+  left: 30%;
+  }
+  75% {position : relative;
+  bottom: 4vh;
+   left: 36%;
+ }
+ 80% {position : relative;
+    bottom: 0;
+ left: 43%;
+ }
+ 85% {position : relative;
+ bottom: 3vh;
+  left: 48%;
+  opacity: 1;
+}
+90% {position : relative;
+   bottom: 0;
+left: 60%;
+opacity: 0;
+}
+95% {position : relative;
+bottom: 5vh;
+ left: -60%;
+ opacity: 0;
+
+}
+ 100% {position : relative;
+    bottom: 0;
+ left: -45%;
+ opacity: 1;
+
+ }
+}
+.diabolicAnim{
+  animation-name: bounce;
+  animation-duration: 10s;
+//  animation-delay: 3s;
+//  animation-iteration-count: infinite;
+}
 #diabolic {
-  position:fixed;
-  left:0;
+  position :relative;
+    bottom: 0%;
+    left:-45%;
   width:9%;
-  bottom:0;
+
 }
