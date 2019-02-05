@@ -12,8 +12,8 @@ import "./style.scss";
   Put the JavaScript code you want below.
 */
 
-let plansArray = JSON.parse(localStorage.getItem('names'));
-let namesArray = JSON.parse(localStorage.getItem('names'));
+namesArray = JSON.parse(localStorage.getItem('names'));
+plansArray = JSON.parse(localStorage.getItem('plans'));
 
 if(plansArray == undefined && namesArray == undefined){
 	plansArray = [];
@@ -22,9 +22,8 @@ if(plansArray == undefined && namesArray == undefined){
 
 let list = [];
 
+
 try{
-	//namesArray = JSON.parse(localStorage.getItem('names'));
-	//plansArray = JSON.parse(localStorage.getItem('plans'));
 	for (let i = 0; i < namesArray.length; i++){
 		let li = document.createElement("li");
 		let h2 = document.createElement("h2");
@@ -39,6 +38,11 @@ try{
 		document.querySelector(".list").appendChild(li);
 		list.push(li);
 	}
+}catch(err){
+
+}
+finally{
+
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
 	        list[i].onclick = function(){
@@ -68,7 +72,7 @@ try{
 	  					document.querySelector(".modal-content").appendChild(commentsList);
 	  				}
 	  			});
-			} 
+			}
 		})(i);
 	}
 	function addItem(name, plan){
@@ -95,7 +99,7 @@ try{
 		list.push(li);
 		let commentsArray = [];
 		let showdown  = require('showdown');
-	  	let converter = new showdown.Converter();
+	  let converter = new showdown.Converter();
 		for (let i = 0; i < list.length; i++){
 		    (function(index){
 		        list[i].onclick = function(){
@@ -136,7 +140,7 @@ try{
 			window.localStorage.setItem('plans', JSON.stringify(plansArray));
 			namesArray.push(document.querySelector(".name").value);
 			window.localStorage.setItem('names', JSON.stringify(namesArray));
-			addItem(document.querySelector(".name").value, document.querySelector(".plan").value);	
+			addItem(document.querySelector(".name").value, document.querySelector(".plan").value);
 		});
 	});
 
@@ -145,6 +149,10 @@ try{
    			document.querySelector(".modal").style.display = "none";
   		}
 	}
+
+
+/*
+>>>>>>> 7c6d38a86bcb1119dbb588572b86e7a73b116a22
 }catch(err){
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
@@ -175,7 +183,7 @@ try{
 	  					document.querySelector(".modal-content").appendChild(commentsList);
 	  				}
 	  			});
-			} 
+			}
 		})(i);
 	}
 
@@ -247,7 +255,7 @@ try{
 			window.localStorage.setItem('plans', JSON.stringify(plansArray));
 			namesArray.push(document.querySelector(".name").value);
 			window.localStorage.setItem('names', JSON.stringify(namesArray));
-			addItem(document.querySelector(".name").value, document.querySelector(".plan").value);	
+			addItem(document.querySelector(".name").value, document.querySelector(".plan").value);
 		});
 	});
 
@@ -263,7 +271,7 @@ try{
 /*
 	let edit = document.querySelector(".edit");
 	edit.addEventListener("click", function(){
-		
+
 	});
 
 
@@ -298,15 +306,4 @@ for (let i = 0; i < list.length; i++){
     	}
 	})(i);
 }
-*/
-
-
-//test animation
-/*
- document.getElementsById("diabolic").addEventListener("click", () => {
-	//document.getElementById('diabolic').style.animation = bounce;
-//document.getElementsById('diabolic').className+='diabolicAnim';
-var dAnim = document.getElementById("diabolic");
-dAnim.className += " diabolicAnim";
-});
 */
