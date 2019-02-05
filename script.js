@@ -12,16 +12,20 @@ import "./style.scss";
   Put the JavaScript code you want below.
 */
 
+let plansArray = JSON.parse(localStorage.getItem('names'));
+let namesArray = JSON.parse(localStorage.getItem('names'));
 
+if(plansArray == undefined && namesArray == undefined){
+	plansArray = [];
+	namesArray = [];
+}
 let list = [];
-let namesArray;
-let plansArray;
 
 try{
-	namesArray = JSON.parse(localStorage.getItem('names'));
-	plansArray = JSON.parse(localStorage.getItem('plans'));
+	//namesArray = JSON.parse(localStorage.getItem('names'));
+	//plansArray = JSON.parse(localStorage.getItem('plans'));
 	console.log(namesArray.length);
-	console.log(plansArray)
+	console.log(typeof(plansArray))
 	console.log(namesArray)
 	for (let i = 0; i < namesArray.length; i++){
 		let li = document.createElement("li");
