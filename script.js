@@ -48,7 +48,9 @@ function addItem(name, plan){
 	            let div = document.createElement("div");
 	            let text = document.createTextNode(list[i].innerHTML);
 	            let comment = document.createElement("BUTTON");
-	            let textArea = document.createElement("TEXTAREA");
+				let textArea = document.createElement("TEXTAREA");
+				let p = document.createElement("p");
+				document.querySelector(".modal-content").appendChild(p);
 	            textArea.class = "comment";
 	            let commentText = document.createTextNode("Comment");
 	            comment.appendChild(commentText);
@@ -69,7 +71,7 @@ function addItem(name, plan){
 	
 // Ouverture de la fenêtre modale de création d'idée
 
-document.querySelector(".add").addEventListener("click", (e) => {
+document.querySelector(".add").addEventListener("click", () => {
 	document.querySelector(".modal-content").innerText = "";
 	document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your idea:</p><input type="text" name="test" class="name" placeholder="Enter idea"></input><p>Description of your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
 	document.querySelector(".modal").style.display = "block";
@@ -93,8 +95,8 @@ window.onclick = function(event){
 	}
 
 let edit = document.querySelector(".edit");
-edit.addEventListener("click", function(e){
-	document.querySelector("li")
+edit.addEventListener("click", function(){
+	
 })
 	/*TO DO: ajouter ces boutons à chaque li
 	<div id ="buttons">

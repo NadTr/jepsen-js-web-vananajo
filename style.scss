@@ -41,6 +41,9 @@ ul{
 li{
 	border-style: solid;
   margin: 3px;
+  .edit,.delete{
+    display: none;
+  } 
 }
 
 .list > li > p{
@@ -80,10 +83,6 @@ li{
   border: 5px solid black;
   width: 50%;
   border-radius : 10px;
-  .edit,.delete{
-    display: none;
-  }
-
 }
 
 .modal-content > p{
