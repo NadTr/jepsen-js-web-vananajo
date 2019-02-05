@@ -125,3 +125,14 @@ for (let i = 0; i < list.length; i++){
 	})(i);
 }
 */
+
+
+//test animation
+/*
+ document.getElementsById("diabolic").addEventListener("click", () => {
+	//document.getElementById('diabolic').style.animation = bounce;
+//document.getElementsById('diabolic').className+='diabolicAnim';
+var dAnim = document.getElementById("diabolic");
+dAnim.className += " diabolicAnim";
+});
+*/
