@@ -71,7 +71,7 @@ finally{
   					commentsList.appendChild(commentary);
   					document.querySelector(".modal-content").appendChild(commentsList);
 	  			}
-	  		
+
 	  			comment.addEventListener("click", () => {
 	  				commentsArray.push(textArea.value);
 		  			window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
@@ -80,7 +80,7 @@ finally{
 	  				commentary.appendChild(commentaryText);
 	  				commentsList.appendChild(commentary);
 	  				document.querySelector(".modal-content").appendChild(commentsList);
-	  			});	
+	  			});
 			}
 		})(i);
 	}
@@ -138,7 +138,7 @@ finally{
 	  					commentsList.appendChild(commentary);
 	  					document.querySelector(".modal-content").appendChild(commentsList);
 		  			}
-		  		
+
 		  			comment.addEventListener("click", () => {
 		  				commentsArray.push(textArea.value);
 		  				window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
@@ -147,7 +147,7 @@ finally{
 	  					commentary.appendChild(commentaryText);
 	  					commentsList.appendChild(commentary);
 	  					document.querySelector(".modal-content").appendChild(commentsList);
-		  			});	
+		  			});
 				}
 	    	})(i);
 	    }
@@ -283,11 +283,8 @@ finally{
   		}
 	}
 }
-<<<<<<< HEAD
 
-=======
 */
->>>>>>> 020e455552b27d6143c16d6e0bc897559735b29e
 /*
 	let edit = document.querySelector(".edit");
 	edit.addEventListener("click", function(){

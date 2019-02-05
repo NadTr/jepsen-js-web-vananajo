@@ -45,7 +45,7 @@ ul{
 
 li{
 
-  border: 2px solid black;
+  border: none;//2px solid black;
   margin: 3px;
   .edit,.delete{
     display: none;
@@ -61,7 +61,7 @@ li{
 	text-align: left;
   display: none;
 }
-.edit{
+/*.edit{
   position: relative;
   right: -3em;
   background-color: rgba(254, 138, 52,1);
@@ -73,7 +73,7 @@ li{
   right: -3em;
   background-color: rgba(249, 56, 44,1);
   margin: .3em;
-}
+}*/
 .container{
   width: 80%;
   text-align: center;
