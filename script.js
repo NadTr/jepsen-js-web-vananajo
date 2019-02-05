@@ -11,27 +11,31 @@ import "./style.scss";
 /*
   Put the JavaScript code you want below.
 */
-window.localStorage.setItem('names', JSON.stringify("José"));
-window.localStorage.setItem('plans', JSON.stringify("José"));
-let namesArray = window.localStorage.getItem('names');
-let plansArray = window.localStorage.getItem('plans');
-let list = [];
 
-console.log(JSON.parse(window.localStorage.getItem('names')));
+if(localStorage.length != 0){
+	let namesArray = Array.from(JSON.parse(window.localStorage.getItem('names')));
+	let plansArray = Array.from(JSON.parse(window.localStorage.getItem('plans')));
 
-for (let i = 0; i < namesArray.length; i++) {
-	let li = document.createElement("li");
-	let h2 = document.createElement("h2");
-	let p = document.createElement("p");
-	let h2Content = document.createTextNode(namesArray[i]);
-	let pContent = document.createTextNode(plansArray[i]);
-	h2.appendChild(h2Content);
-	p.appendChild(pContent);
-	li.appendChild(h2);
-	li.appendChild(p);
-	document.querySelector(".list").appendChild(li);
-	list.push(li);
+
+	let list = [];
+
+	for (let i = 0; i < namesArray.length; i++) {
+		let li = document.createElement("li");
+		let h2 = document.createElement("h2");
+		let p = document.createElement("p");
+		let h2Content = document.createTextNode(namesArray[i]);
+		let pContent = document.createTextNode(plansArray[i]);
+		h2.appendChild(h2Content);
+		p.appendChild(pContent);
+		li.appendChild(h2);
+		li.appendChild(p);
+		document.querySelector(".list").appendChild(li);
+		list.push(li);
+	}
 }
+else{
+	let plansArray = [];
+	let namesArray = [];
 
 for (let i = 0; i < list.length; i++){
     (function(index){
@@ -48,10 +52,19 @@ for (let i = 0; i < list.length; i++){
 			document.querySelector(".modal-content").innerHTML = div.innerText;
 			document.querySelector(".modal-content").appendChild(textArea);
             document.querySelector(".modal-content").appendChild(comment);
-  			document.querySelector(".modal").style.display = "block";	
+  			document.querySelector(".modal").style.display = "block";
+  			let commentsArray = [];
+  			let commentsList = document.createElement("ul");
   			comment.addEventListener("click", () => {
   				commentsArray.push(textArea.value);
-  				window.localStorage.setItem( 'Comments' + i, JSON.stringify(commentsArray));
+  				window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
+  				for (let j = 0; j < window.localStorage.getItem('comments' + i).length; j++) {
+  					let commentary = document.createElement("li");
+  					let commentaryText = document.createTextNode(JSON.parse(window.localStorage.getItem('comments' + i))[j]);
+  					commentary.appendChild(commentaryText);
+  					commentsList.appendChild(commentary);
+  					document.querySelector(".modal-content").appendChild(commentsList);
+  				}
   			});
 
 		} 
@@ -70,7 +83,6 @@ function addItem(name, plan){
 	li.appendChild(p);
 	list.push(li);
 	document.querySelector(".list").appendChild(li);
-	let commentsArray = [];
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
 	        list[i].onclick = function(){
