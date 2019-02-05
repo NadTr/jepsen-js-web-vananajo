@@ -12,8 +12,8 @@ import "./style.scss";
   Put the JavaScript code you want below.
 */
 
-namesArray = JSON.parse(localStorage.getItem('names'));
-plansArray = JSON.parse(localStorage.getItem('plans'));
+let namesArray = JSON.parse(localStorage.getItem('names'));
+let plansArray = JSON.parse(localStorage.getItem('plans'));
 
 if(plansArray == undefined && namesArray == undefined){
 	plansArray = [];
@@ -59,19 +59,28 @@ finally{
 				document.querySelector(".modal-content").appendChild(textArea);
 	            document.querySelector(".modal-content").appendChild(comment);
 	  			document.querySelector(".modal").style.display = "block";
-	  			let commentsArray = [];
+	  			let commentsArray = JSON.parse(localStorage.getItem('comments' + i));
+		  		if(commentsArray == undefined){
+					commentsArray = [];
+				}
 	  			let commentsList = document.createElement("ul");
+	  			for (let j = 0; j < commentsArray.length; j++) {
+  					let commentary = document.createElement("li");
+  					let commentaryText = document.createTextNode(commentsArray[j]);
+  					commentary.appendChild(commentaryText);
+  					commentsList.appendChild(commentary);
+  					document.querySelector(".modal-content").appendChild(commentsList);
+	  			}
+	  		
 	  			comment.addEventListener("click", () => {
 	  				commentsArray.push(textArea.value);
-	  				window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
-	  				for (let j = 0; j < window.localStorage.getItem('comments' + i).length; j++) {
-	  					let commentary = document.createElement("li");
-	  					let commentaryText = document.createTextNode(JSON.parse(window.localStorage.getItem('comments' + i))[j]);
-	  					commentary.appendChild(commentaryText);
-	  					commentsList.appendChild(commentary);
-	  					document.querySelector(".modal-content").appendChild(commentsList);
-	  				}
-	  			});
+		  			window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
+		  			let commentary = document.createElement("li");
+	  				let commentaryText = document.createTextNode(textArea.value);
+	  				commentary.appendChild(commentaryText);
+	  				commentsList.appendChild(commentary);
+	  				document.querySelector(".modal-content").appendChild(commentsList);
+	  			});	
 			}
 		})(i);
 	}
@@ -99,7 +108,7 @@ finally{
 		list.push(li);
 		let commentsArray = [];
 		let showdown  = require('showdown');
-	  let converter = new showdown.Converter();
+	  	let converter = new showdown.Converter();
 		for (let i = 0; i < list.length; i++){
 		    (function(index){
 		        list[i].onclick = function(){
@@ -109,8 +118,6 @@ finally{
 		            let text = document.createTextNode(list[i].innerHTML);
 		            let comment = document.createElement("BUTTON");
 					let textArea = document.createElement("TEXTAREA");
-					let p = document.createElement("p");
-					document.querySelector(".modal-content").appendChild(p);
 		            textArea.class = "comment";
 		            let commentText = document.createTextNode("Comment");
 		            comment.appendChild(commentText);
@@ -119,12 +126,29 @@ finally{
 					document.querySelector(".modal-content").appendChild(textArea);
 		            document.querySelector(".modal-content").appendChild(comment);
 		  			document.querySelector(".modal").style.display = "block";
+		            let commentsArray = JSON.parse(localStorage.getItem('comments' + i));
+		  			if(commentsArray == undefined){
+						commentsArray = [];
+					}
+		  			let commentsList = document.createElement("ul");
+		  			for (let j = 0; j < commentsArray.length; j++) {
+	  					let commentary = document.createElement("li");
+	  					let commentaryText = document.createTextNode(commentsArray[j]);
+	  					commentary.appendChild(commentaryText);
+	  					commentsList.appendChild(commentary);
+	  					document.querySelector(".modal-content").appendChild(commentsList);
+		  			}
+		  		
 		  			comment.addEventListener("click", () => {
 		  				commentsArray.push(textArea.value);
-		  				window.localStorage.setItem( 'Comments' + i, JSON.stringify(commentsArray));
-		  			});
-
-	    		}
+		  				window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
+		  				let commentary = document.createElement("li");
+	  					let commentaryText = document.createTextNode(textArea.value);
+	  					commentary.appendChild(commentaryText);
+	  					commentsList.appendChild(commentary);
+	  					document.querySelector(".modal-content").appendChild(commentsList);
+		  			});	
+				}
 	    	})(i);
 	    }
 	}
@@ -149,10 +173,10 @@ finally{
    			document.querySelector(".modal").style.display = "none";
   		}
 	}
-
+}
 
 /*
->>>>>>> 7c6d38a86bcb1119dbb588572b86e7a73b116a22
+
 }catch(err){
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
