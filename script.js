@@ -105,7 +105,7 @@ finally{
   					commentsList.appendChild(commentary);
   					document.querySelector(".modal-content").appendChild(commentsList);
 	  			}
-	  		
+
 	  			comment.addEventListener("click", () => {
 	  				commentsArray.push(textArea.value);
 		  			window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
@@ -114,7 +114,7 @@ finally{
 	  				commentary.appendChild(commentaryText);
 	  				commentsList.appendChild(commentary);
 	  				document.querySelector(".modal-content").appendChild(commentsList);
-	  			});	
+	  			});
 			}
 		})(i);
 	}
@@ -193,7 +193,7 @@ finally{
 	  					commentsList.appendChild(commentary);
 	  					document.querySelector(".modal-content").appendChild(commentsList);
 		  			}
-		  		
+
 		  			comment.addEventListener("click", () => {
 		  				commentsArray.push(textArea.value);
 		  				window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
@@ -202,7 +202,7 @@ finally{
 	  					commentary.appendChild(commentaryText);
 	  					commentsList.appendChild(commentary);
 	  					document.querySelector(".modal-content").appendChild(commentsList);
-		  			});	
+		  			});
 				}
 	    	})(i);
 	    }
@@ -229,12 +229,6 @@ finally{
   		}
 	}
 }
-
-
-
-
-
-
 
 // Suppression d'une idée (name et plan) et de tous ses commentaires
 /*
