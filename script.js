@@ -12,10 +12,61 @@ import "./style.scss";
   Put the JavaScript code you want below.
 */
 
-window.localStorage.clear();
 
 let namesArray = [];
 let plansArray = [];
+
+
+let list = [];
+
+for (let i = 0; i < namesArray.length; i++) {
+	let li = document.createElement("li");
+	let h2 = document.createElement("h2");
+	let p = document.createElement("p");
+	let h2Content = document.createTextNode(namesArray[i]);
+	let pContent = document.createTextNode(plansArray[i]);
+	h2.appendChild(h2Content);
+	p.appendChild(pContent);
+	li.appendChild(h2);
+	li.appendChild(p);
+	document.querySelector(".list").appendChild(li);
+	list.push(li);
+}
+
+for (let i = 0; i < list.length; i++){
+    (function(index){
+        list[i].onclick = function(){
+            document.querySelector(".modal-content").innerText = "";
+            let div = document.createElement("div");
+            let text = document.createTextNode(list[i].innerHTML);
+            let comment = document.createElement("BUTTON");
+            let textArea = document.createElement("TEXTAREA");
+            textArea.class = "comment";
+            let commentText = document.createTextNode("Comment");
+            comment.appendChild(commentText);
+            div.appendChild(text);
+			document.querySelector(".modal-content").innerHTML = div.innerText;
+			document.querySelector(".modal-content").appendChild(textArea);
+            document.querySelector(".modal-content").appendChild(comment);
+  			document.querySelector(".modal").style.display = "block";
+  			let commentsArray = [];
+  			let commentsList = document.createElement("ul");
+  			comment.addEventListener("click", () => {
+  				commentsArray.push(textArea.value);
+  				window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
+  				for (let j = 0; j < window.localStorage.getItem('comments' + i).length; j++) {
+  					let commentary = document.createElement("li");
+  					let commentaryText = document.createTextNode(JSON.parse(window.localStorage.getItem('comments' + i))[j]);
+  					commentary.appendChild(commentaryText);
+  					commentsList.appendChild(commentary);
+  					document.querySelector(".modal-content").appendChild(commentsList);
+  				}
+  			});
+
+		} 
+	})(i);
+}
+
 
 function addItem(name, plan){
 	let li = document.createElement("li");
@@ -40,7 +91,7 @@ function addItem(name, plan){
 	h2.appendChild(deleteButton);
 	let commentsArray = [];
 	let showdown  = require('showdown');
-  let converter = new showdown.Converter();
+  	let converter = new showdown.Converter();
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
 	        list[i].onclick = function(){
@@ -78,7 +129,7 @@ document.querySelector(".add").addEventListener("click", (e) => {
 		plansArray.push(document.querySelector(".plan").value);
 		window.localStorage.setItem('plans', JSON.stringify(plansArray));
 		namesArray.push(document.querySelector(".name").value);
-		window.localStorage.setItem('names', JSON.stringify(namesArray))
+		window.localStorage.setItem('names', JSON.stringify(namesArray));
 		addItem(document.querySelector(".name").value, document.querySelector(".plan").value);
 		document.querySelector(".modal").style.display = "none";
 	});
