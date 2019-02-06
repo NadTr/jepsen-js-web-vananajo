@@ -60,15 +60,16 @@ finally{
 	            let text = document.createTextNode(plansArray[i]);
 	            let comment = document.createElement("BUTTON");
 				let textArea = document.createElement("TEXTAREA");
-	            textArea.class = "comment";
+	            textArea.className = "comment";
 	            let commentText = document.createTextNode("Comment");
+							commentText.className = "commentDisp";
 	            comment.appendChild(commentText);
 	            div.appendChild(h2);
             	div.appendChild(text);
 	            document.querySelector(".modal-content").appendChild(editButton);
 				document.querySelector(".modal-content").appendChild(deleteButton);
 				document.querySelector(".modal-content").appendChild(div);
-				
+
 
 
 				editButton.addEventListener("click", () => {
@@ -87,8 +88,8 @@ finally{
 						window.localStorage.setItem('plans', JSON.stringify(plansArray));
 						document.querySelector(".modal").style.display = "none";
 						document.location.reload(true);
-					});	
-				});	
+					});
+				});
 
 				document.querySelector(".modal-content").appendChild(textArea);
 	            document.querySelector(".modal-content").appendChild(comment);
@@ -150,7 +151,7 @@ finally{
 		            let text = document.createTextNode(plansArray[i]);
 		            let comment = document.createElement("BUTTON");
 					let textArea = document.createElement("TEXTAREA");
-		            textArea.class = "comment";
+		            textArea.className = "comment";
 		            let commentText = document.createTextNode("Comment");
 		            comment.appendChild(commentText);
 		            div.appendChild(h2);
@@ -175,8 +176,8 @@ finally{
 							window.localStorage.setItem('plans', JSON.stringify(plansArray));
 							document.querySelector(".modal").style.display = "none";
 							document.location.reload(true);
-						});	
-					});	
+						});
+					});
 
 					document.querySelector(".modal-content").appendChild(textArea);
 		            document.querySelector(".modal-content").appendChild(comment);
@@ -242,6 +243,13 @@ storage.removeItem("comments"+index);
 }
 	});
 */
+
+document.querySelector("#diabolic").addEventListener("click", () => {
+		document.querySelector("#diabolic").className = "diabolicAnim";
+		setTimeout(function() { document.querySelector("#diabolic").className = ""; }, 10000);
+	 });
+
+
 
 	/*TO DO: ajouter ces boutons à chaque li
 	<div id ="buttons">
