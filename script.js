@@ -1,3 +1,4 @@
+import {markdown} from 'markdown';
 
 // import some polyfill to ensure everything works OK
 import "babel-polyfill"
@@ -62,7 +63,7 @@ finally{
 	            let text = plansArray[i];
 	            let comment = document.createElement("BUTTON");
 				let textArea = document.createElement("TEXTAREA");
-	            textArea.class = "comment";
+	            textArea.className = "comment";
 	            let commentText = document.createTextNode("Comment");
 	            comment.appendChild(commentText);
 	            div.appendChild(h2)
@@ -92,6 +93,21 @@ finally{
 						document.querySelector(".modal").style.display = "none";
 						document.location.reload(true);
 					});
+				});
+
+				deleteButton.addEventListener("click", () => {
+					let deleteIdea = window.confirm("Do you really want to delete this idea?");
+					if(deleteIdea){
+						console.log("test");
+						list.splice(i, 1);
+						namesArray.splice(i, 1);
+						plansArray.splice(i, 1);
+						window.localStorage.removeItem('comments' + i);
+						window.localStorage.setItem('names', JSON.stringify(namesArray));
+						window.localStorage.setItem('plans', JSON.stringify(plansArray));
+						document.querySelector(".modal").style.display = "none";
+						document.location.reload(true);
+					}
 				});
 
 				document.querySelector(".modal-content").appendChild(textArea);
@@ -152,7 +168,7 @@ finally{
 		            let text = plansArray[i];
 		            let comment = document.createElement("BUTTON");
 					let textArea = document.createElement("TEXTAREA");
-		            textArea.class = "comment";
+		            textArea.className = "comment";
 		            let commentText = document.createTextNode("Comment");
 		            comment.appendChild(commentText);
 		            div.appendChild(h2);
@@ -180,6 +196,21 @@ finally{
 							document.querySelector(".modal").style.display = "none";
 							document.location.reload(true);
 						});
+					});
+
+					deleteButton.addEventListener("click", () => {
+						let deleteIdea = window.confirm("Do you really want to delete this idea?");
+						if(deleteIdea){
+							console.log(i);
+							list.splice(i, 1);
+							namesArray.splice(i, 1);
+							plansArray.splice(i, 1);
+							window.localStorage.removeItem('comments' + i);
+							window.localStorage.setItem('names', JSON.stringify(namesArray));
+							window.localStorage.setItem('plans', JSON.stringify(plansArray));
+							document.querySelector(".modal").style.display = "none";
+							document.location.reload(true);
+						}
 					});
 
 					document.querySelector(".modal-content").appendChild(textArea);

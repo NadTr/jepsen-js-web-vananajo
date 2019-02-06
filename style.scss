@@ -222,9 +222,9 @@ table{
       }
 }
 #logo{
+  position : absolute;
   max-height: 25vh;
   max-width: 22%;
-  position : absolute;
   top: -5.3em;
   left: 0.5em;
   animation-name: logoMove;
