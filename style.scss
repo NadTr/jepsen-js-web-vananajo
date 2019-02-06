@@ -18,6 +18,7 @@ body{
   background-color: black;
   background-image: url(https://i.pinimg.com/originals/f8/16/3c/f8163c153c324dabdbe994716468e39b.jpg);
   background-position: center;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -36,7 +37,9 @@ body{
     color:black;
     font-size: 15pt;
 }
-
+.add {
+  margin-left:4%;
+}
 ul{
   	list-style-type: none;
   }
@@ -78,7 +81,6 @@ ul{
   text-align: center;
   margin:0.3em;
   margin:auto;
-  margin-bottom: 5em;
   background-color: rgba(255,255,255,0.2);
 //  opacity:0.5;
  // border: 1px solid black;
@@ -241,13 +243,13 @@ table{
       }
 }
 #logo{
-  max-height: 25vh;
-max-width: 22%;
   position : absolute;
-  top : -5.3em;
+  max-height: 25vh;
+  max-width: 22%;
+  top: -5.3em;
   left: 0.5em;
   animation-name: logoMove;
-  animation-duration: 7s;
+  animation-duration:7s;
 }
 
 
