@@ -1,3 +1,4 @@
+import {markdown} from 'markdown';
 
 // import some polyfill to ensure everything works OK
 import "babel-polyfill"
@@ -60,7 +61,7 @@ finally{
 	            let text = document.createTextNode(plansArray[i]);
 	            let comment = document.createElement("BUTTON");
 				let textArea = document.createElement("TEXTAREA");
-	            textArea.class = "comment";
+	            textArea.className = "comment";
 	            let commentText = document.createTextNode("Comment");
 	            comment.appendChild(commentText);
 	            div.appendChild(h2);
@@ -71,6 +72,7 @@ finally{
 				
 				editButton.addEventListener("click", () => {
 					document.querySelector(".modal-content").innerText = "";
+					document.querySelector(".modal-content").appendChild(h2);
 					let planEdit = document.createElement("textarea");
 					document.querySelector(".modal-content").appendChild(planEdit);
 					planEdit.value = plansArray[i];
@@ -163,7 +165,7 @@ finally{
 		            let text = document.createTextNode(plansArray[i]);
 		            let comment = document.createElement("BUTTON");
 					let textArea = document.createElement("TEXTAREA");
-		            textArea.class = "comment";
+		            textArea.className = "comment";
 		            let commentText = document.createTextNode("Comment");
 		            comment.appendChild(commentText);
 		            div.appendChild(h2);
@@ -174,6 +176,7 @@ finally{
 
 					editButton.addEventListener("click", () => {
 						document.querySelector(".modal-content").innerText = "";
+						document.querySelector(".modal-content").appendChild(h2);
 						let planEdit = document.createElement("textarea");
 						document.querySelector(".modal-content").appendChild(planEdit);
 						planEdit.value = plansArray[i];
@@ -194,7 +197,7 @@ finally{
 					deleteButton.addEventListener("click", () => {
 						let deleteIdea = window.confirm("Do you really want to delete this idea?");
 						if(deleteIdea){
-							console.log("test");
+							console.log(i);
 							list.splice(i, 1);
 							namesArray.splice(i, 1);
 							plansArray.splice(i, 1);
@@ -238,7 +241,7 @@ finally{
 
 	document.querySelector(".add").addEventListener("click", () => {
 		document.querySelector(".modal-content").innerText = "";
-		document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your name:</p><input type="text" name="test" class="name" placeholder="Enter Name"></input><p>Your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
+		document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Name of your plan:</p><input type="text" name="test" class="name" placeholder="Enter Name"></input><p>Your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
 		document.querySelector(".modal").style.display = "block";
 
 		document.querySelector(".submit").addEventListener("click", () => {
