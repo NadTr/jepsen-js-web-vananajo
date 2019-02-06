@@ -48,14 +48,48 @@ finally{
 	        list[i].onclick = function(){
 	            document.querySelector(".modal-content").innerText = "";
 	            let div = document.createElement("div");
-	            let text = document.createTextNode(list[i].innerHTML);
+	            let editButton = document.createElement("BUTTON");
+				let deleteButton = document.createElement("BUTTON");
+				let textEdit = document.createTextNode("Edit");
+				let textDelete = document.createTextNode("Delete");
+				editButton.appendChild(textEdit);
+				deleteButton.appendChild(textDelete);
+	            let h2 = document.createElement("h2");
+				let h2Text = document.createTextNode(namesArray[i]);
+				h2.appendChild(h2Text);
+	            let text = document.createTextNode(plansArray[i]);
 	            let comment = document.createElement("BUTTON");
-	            let textArea = document.createElement("TEXTAREA");
+				let textArea = document.createElement("TEXTAREA");
 	            textArea.class = "comment";
 	            let commentText = document.createTextNode("Comment");
 	            comment.appendChild(commentText);
-	            div.appendChild(text);
-				document.querySelector(".modal-content").innerHTML = div.innerText;
+	            div.appendChild(h2);
+            	div.appendChild(text);
+	            document.querySelector(".modal-content").appendChild(editButton);
+				document.querySelector(".modal-content").appendChild(deleteButton);
+				document.querySelector(".modal-content").appendChild(div);
+				
+
+
+				editButton.addEventListener("click", () => {
+					document.querySelector(".modal-content").innerText = "";
+					let planEdit = document.createElement("textarea");
+					document.querySelector(".modal-content").appendChild(planEdit);
+					planEdit.value = plansArray[i];
+					let submitEdit = document.createElement("BUTTON");
+					let submitEditText = document.createTextNode("Submit");
+					submitEdit.appendChild(submitEditText);
+					document.querySelector(".modal-content").appendChild(submitEdit);
+
+
+					submitEdit.addEventListener("click", () => {
+						plansArray[i] = planEdit.value;
+						window.localStorage.setItem('plans', JSON.stringify(plansArray));
+						document.querySelector(".modal").style.display = "none";
+						document.location.reload(true);
+					});	
+				});	
+
 				document.querySelector(".modal-content").appendChild(textArea);
 	            document.querySelector(".modal-content").appendChild(comment);
 	  			document.querySelector(".modal").style.display = "block";
@@ -95,16 +129,6 @@ finally{
 		li.appendChild(h2);
 		li.appendChild(p);
 		document.querySelector(".list").appendChild(li);
-		let editButton = document.createElement("button");
-		let deleteButton = document.createElement("button");
-		let textEdit = document.createTextNode("Edit");
-		let textDelete = document.createTextNode("Delete");
-		editButton.appendChild(textEdit);
-		deleteButton.appendChild(textDelete);
-		editButton.className = "edit";
-		deleteButton.className = "delete"
-		h2.appendChild(editButton);
-		h2.appendChild(deleteButton);
 		list.push(li);
 		let commentsArray = [];
 		let showdown  = require('showdown');
@@ -112,17 +136,48 @@ finally{
 		for (let i = 0; i < list.length; i++){
 		    (function(index){
 		        list[i].onclick = function(){
-		        	console.log("test");
 		            document.querySelector(".modal-content").innerText = "";
 		            let div = document.createElement("div");
-		            let text = document.createTextNode(list[i].innerHTML);
+		            let editButton = document.createElement("BUTTON");
+					let deleteButton = document.createElement("BUTTON");
+					let textEdit = document.createTextNode("Edit");
+					let textDelete = document.createTextNode("Delete");
+					editButton.appendChild(textEdit);
+					deleteButton.appendChild(textDelete);
+					let h2 = document.createElement("h2");
+					let h2Text = document.createTextNode(namesArray[i]);
+					h2.appendChild(h2Text);
+		            let text = document.createTextNode(plansArray[i]);
 		            let comment = document.createElement("BUTTON");
 					let textArea = document.createElement("TEXTAREA");
 		            textArea.class = "comment";
 		            let commentText = document.createTextNode("Comment");
 		            comment.appendChild(commentText);
-		            div.appendChild(text);
-					document.querySelector(".modal-content").innerHTML = div.innerText;
+		            div.appendChild(h2);
+	            	div.appendChild(text);
+					document.querySelector(".modal-content").appendChild(editButton);
+					document.querySelector(".modal-content").appendChild(deleteButton);
+					document.querySelector(".modal-content").appendChild(div);
+
+					editButton.addEventListener("click", () => {
+						document.querySelector(".modal-content").innerText = "";
+						let planEdit = document.createElement("textarea");
+						document.querySelector(".modal-content").appendChild(planEdit);
+						planEdit.value = plansArray[i];
+						let submitEdit = document.createElement("BUTTON");
+						let submitEditText = document.createTextNode("Submit");
+						submitEdit.appendChild(submitEditText);
+						document.querySelector(".modal-content").appendChild(submitEdit);
+
+
+						submitEdit.addEventListener("click", () => {
+							plansArray[i] = planEdit.value;
+							window.localStorage.setItem('plans', JSON.stringify(plansArray));
+							document.querySelector(".modal").style.display = "none";
+							document.location.reload(true);
+						});	
+					});	
+
 					document.querySelector(".modal-content").appendChild(textArea);
 		            document.querySelector(".modal-content").appendChild(comment);
 		  			document.querySelector(".modal").style.display = "block";
@@ -175,6 +230,7 @@ finally{
 	}
 }
 
+<<<<<<< HEAD
 /*
 
 }catch(err){
@@ -294,6 +350,8 @@ finally{
 */
 
 
+=======
+>>>>>>> 4780d1040d5b8a907f734a2a7540a71ab6f26c4f
 // Suppression d'une idée (name et plan) et de tous ses commentaires
 /*
 document.querySelector(".delete").addEventListener("click", () => {
