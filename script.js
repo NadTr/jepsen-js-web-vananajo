@@ -67,9 +67,9 @@ finally{
 	            let commentText = document.createTextNode("Comment");
 							commentText.className = "commentDisp";
 	            comment.appendChild(commentText);
-	            div.appendChild(h2)
+	            div.appendChild(h2);
 							let test = document.createElement('div');
-							test.innerHTML = text
+							test.innerHTML = text;
 						  div.appendChild(test);
 	            document.querySelector(".modal-content").appendChild(editButton);
 				document.querySelector(".modal-content").appendChild(deleteButton);
@@ -89,7 +89,7 @@ finally{
 
 
 					submitEdit.addEventListener("click", () => {
-						plansArray[i] = planEdit.value;
+						plansArray[i] = converter.makeHtml(planEdit.value);
 						window.localStorage.setItem('plans', JSON.stringify(plansArray));
 						document.querySelector(".modal").style.display = "none";
 						document.location.reload(true);
@@ -174,7 +174,7 @@ finally{
 		            comment.appendChild(commentText);
 		            div.appendChild(h2);
 								let test = document.createElement('div');
-								test.innerHTML = text
+								test.innerHTML = text;
 							  div.appendChild(test);
 					document.querySelector(".modal-content").appendChild(editButton);
 					document.querySelector(".modal-content").appendChild(deleteButton);
@@ -192,7 +192,7 @@ finally{
 
 
 						submitEdit.addEventListener("click", () => {
-							plansArray[i] = planEdit.value;
+							plansArray[i] = converter.makeHtml(planEdit.value);
 							window.localStorage.setItem('plans', JSON.stringify(plansArray));
 							document.querySelector(".modal").style.display = "none";
 							document.location.reload(true);
