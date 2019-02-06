@@ -69,8 +69,6 @@ finally{
 				document.querySelector(".modal-content").appendChild(deleteButton);
 				document.querySelector(".modal-content").appendChild(div);
 				
-
-
 				editButton.addEventListener("click", () => {
 					document.querySelector(".modal-content").innerText = "";
 					let planEdit = document.createElement("textarea");
@@ -88,6 +86,21 @@ finally{
 						document.querySelector(".modal").style.display = "none";
 						document.location.reload(true);
 					});	
+				});	
+
+				deleteButton.addEventListener("click", () => {
+					let deleteIdea = window.confirm("Do you really want to delete this idea?");
+					if(deleteIdea){
+						console.log("test");
+						list.splice(i, 1);
+						namesArray.splice(i, 1);
+						plansArray.splice(i, 1);
+						window.localStorage.removeItem('comments' + i);
+						window.localStorage.setItem('names', JSON.stringify(namesArray));
+						window.localStorage.setItem('plans', JSON.stringify(plansArray));
+						document.querySelector(".modal").style.display = "none";
+						document.location.reload(true);
+					}
 				});	
 
 				document.querySelector(".modal-content").appendChild(textArea);
@@ -176,6 +189,21 @@ finally{
 							document.querySelector(".modal").style.display = "none";
 							document.location.reload(true);
 						});	
+					});
+
+					deleteButton.addEventListener("click", () => {
+						let deleteIdea = window.confirm("Do you really want to delete this idea?");
+						if(deleteIdea){
+							console.log("test");
+							list.splice(i, 1);
+							namesArray.splice(i, 1);
+							plansArray.splice(i, 1);
+							window.localStorage.removeItem('comments' + i);
+							window.localStorage.setItem('names', JSON.stringify(namesArray));
+							window.localStorage.setItem('plans', JSON.stringify(plansArray));
+							document.querySelector(".modal").style.display = "none";
+							document.location.reload(true);
+						}	
 					});	
 
 					document.querySelector(".modal-content").appendChild(textArea);

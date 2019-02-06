@@ -43,10 +43,16 @@ ul{
 
 }
 
-li{
-
-  border: none;//2px solid black;
+.list > li{
+  border:2px solid black;
+  border-radius: 25px;//2px solid black;
   margin: 3px;
+  background-color: rgba(100,0,0,0.6);
+  padding-top: 25px;
+  padding-bottom: 25px;
+  width: 650px;
+  margin-left: auto;
+  margin-right: auto;
   .edit,.delete{
     display: none;
   }
@@ -80,7 +86,7 @@ li{
   margin:0.3em;
   margin:auto;
   margin-bottom: 5em;
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(0,0,0,0.5);
 //  opacity:0.5;
  // border: 1px solid black;
  }
@@ -109,6 +115,16 @@ li{
   border: 3px solid black;
   width: 50%;
   border-radius : 10px;
+  div{
+    margin-top: 5px;
+    border-style: solid;
+    h2{
+    color: red;
+    }
+  }
+  li{
+    border-style: none none solid none;
+  }
 }
 
 .modal-content > p{
@@ -127,6 +143,13 @@ li{
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.add{
+  border-radius: 10px;
+  background-color: rgb(100,0,0);
+  margin-left: auto;
+  margin-right: auto;
 }
 //Animation : names arrive
 @keyframes nameMove {
