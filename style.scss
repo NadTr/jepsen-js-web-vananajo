@@ -36,6 +36,9 @@ h3{
     color:black;
     font-size: 15pt;
 }
+.add {
+  margin-left:4%;
+}
 ul{
 	list-style-type: none;
   text-align: center;
@@ -219,9 +222,13 @@ table{
       }
 }
 #logo{
+  max-height: 25vh;
+  max-width: 22%;
   position : absolute;
-  top : -100px;
-  left: 30px;
+  top: -5.3em;
+  left: 0.5em;
+  animation-name: logoMove;
+  animation-duration:7s;
 }
 
 .comment{

@@ -14,6 +14,8 @@ import "./style.scss";
 
 let namesArray = JSON.parse(localStorage.getItem('names'));
 let plansArray = JSON.parse(localStorage.getItem('plans'));
+const showdown  = require('showdown');
+const converter = new showdown.Converter(); // converter.makeHtml() converter
 
 if(plansArray == undefined && namesArray == undefined){
 	plansArray = [];
@@ -46,7 +48,7 @@ finally{
 	for (let i = 0; i < list.length; i++){
 	    (function(index){
 	        list[i].onclick = function(){
-	            document.querySelector(".modal-content").innerText = "";
+	            document.querySelector(".modal-content").innerHTML = "";
 	            let div = document.createElement("div");
 	            let editButton = document.createElement("BUTTON");
 				let deleteButton = document.createElement("BUTTON");
@@ -57,25 +59,27 @@ finally{
 	            let h2 = document.createElement("h2");
 				let h2Text = document.createTextNode(namesArray[i]);
 				h2.appendChild(h2Text);
-	            let text = document.createTextNode(plansArray[i]);
+	            let text = plansArray[i];
 	            let comment = document.createElement("BUTTON");
 				let textArea = document.createElement("TEXTAREA");
 	            textArea.class = "comment";
 	            let commentText = document.createTextNode("Comment");
 	            comment.appendChild(commentText);
-	            div.appendChild(h2);
-            	div.appendChild(text);
+	            div.appendChild(h2)
+							let test = document.createElement('div');
+							test.innerHTML = text
+						  div.appendChild(test);
 	            document.querySelector(".modal-content").appendChild(editButton);
 				document.querySelector(".modal-content").appendChild(deleteButton);
 				document.querySelector(".modal-content").appendChild(div);
-				
+
 
 
 				editButton.addEventListener("click", () => {
-					document.querySelector(".modal-content").innerText = "";
+					document.querySelector(".modal-content").innerHTML = "";
 					let planEdit = document.createElement("textarea");
 					document.querySelector(".modal-content").appendChild(planEdit);
-					planEdit.value = plansArray[i];
+					planEdit.value = converter.makeMarkdown(plansArray[i]);
 					let submitEdit = document.createElement("BUTTON");
 					let submitEditText = document.createTextNode("Submit");
 					submitEdit.appendChild(submitEditText);
@@ -87,8 +91,8 @@ finally{
 						window.localStorage.setItem('plans', JSON.stringify(plansArray));
 						document.querySelector(".modal").style.display = "none";
 						document.location.reload(true);
-					});	
-				});	
+					});
+				});
 
 				document.querySelector(".modal-content").appendChild(textArea);
 	            document.querySelector(".modal-content").appendChild(comment);
@@ -131,12 +135,10 @@ finally{
 		document.querySelector(".list").appendChild(li);
 		list.push(li);
 		let commentsArray = [];
-		let showdown  = require('showdown');
-	  	let converter = new showdown.Converter();
 		for (let i = 0; i < list.length; i++){
 		    (function(index){
 		        list[i].onclick = function(){
-		            document.querySelector(".modal-content").innerText = "";
+		            document.querySelector(".modal-content").innerHTML = "";
 		            let div = document.createElement("div");
 		            let editButton = document.createElement("BUTTON");
 					let deleteButton = document.createElement("BUTTON");
@@ -147,23 +149,25 @@ finally{
 					let h2 = document.createElement("h2");
 					let h2Text = document.createTextNode(namesArray[i]);
 					h2.appendChild(h2Text);
-		            let text = document.createTextNode(plansArray[i]);
+		            let text = plansArray[i];
 		            let comment = document.createElement("BUTTON");
 					let textArea = document.createElement("TEXTAREA");
 		            textArea.class = "comment";
 		            let commentText = document.createTextNode("Comment");
 		            comment.appendChild(commentText);
 		            div.appendChild(h2);
-	            	div.appendChild(text);
+								let test = document.createElement('div');
+								test.innerHTML = text
+							  div.appendChild(test);
 					document.querySelector(".modal-content").appendChild(editButton);
 					document.querySelector(".modal-content").appendChild(deleteButton);
 					document.querySelector(".modal-content").appendChild(div);
 
 					editButton.addEventListener("click", () => {
-						document.querySelector(".modal-content").innerText = "";
+						document.querySelector(".modal-content").innerHTML= "";
 						let planEdit = document.createElement("textarea");
 						document.querySelector(".modal-content").appendChild(planEdit);
-						planEdit.value = plansArray[i];
+						planEdit.value = converter.makeMarkdown(plansArray[i]);
 						let submitEdit = document.createElement("BUTTON");
 						let submitEditText = document.createTextNode("Submit");
 						submitEdit.appendChild(submitEditText);
@@ -175,8 +179,8 @@ finally{
 							window.localStorage.setItem('plans', JSON.stringify(plansArray));
 							document.querySelector(".modal").style.display = "none";
 							document.location.reload(true);
-						});	
-					});	
+						});
+					});
 
 					document.querySelector(".modal-content").appendChild(textArea);
 		            document.querySelector(".modal-content").appendChild(comment);
@@ -209,17 +213,19 @@ finally{
 	}
 
 	document.querySelector(".add").addEventListener("click", () => {
-		document.querySelector(".modal-content").innerText = "";
+		document.querySelector(".modal-content").innerHTML = "";
 		document.querySelector(".modal-content").innerHTML = '<h2>Creation of a new plan</h2><p>Your name:</p><input type="text" name="test" class="name" placeholder="Enter Name"></input><p>Your plan to take over the world:</p><textarea type="text" name="plan" class="plan" placeholder="Enter Plan"></textarea><button class="submit">Submit</button>';
 		document.querySelector(".modal").style.display = "block";
 
 		document.querySelector(".submit").addEventListener("click", () => {
 			document.querySelector(".modal").style.display = "none";
-			plansArray.push(document.querySelector(".plan").value);
+			plansArray.push(converter.makeHtml(document.querySelector(".plan").value));
 			window.localStorage.setItem('plans', JSON.stringify(plansArray));
 			namesArray.push(document.querySelector(".name").value);
 			window.localStorage.setItem('names', JSON.stringify(namesArray));
-			addItem(document.querySelector(".name").value, document.querySelector(".plan").value);
+			let desc = converter.makeHtml(document.querySelector(".plan").value);
+			console.log(desc);
+			addItem(document.querySelector(".name").value, desc);
 		});
 	});
 
@@ -230,7 +236,6 @@ finally{
 	}
 }
 
-<<<<<<< HEAD
 /*
 
 }catch(err){
@@ -339,19 +344,8 @@ finally{
   		}
 	}
 }
-<<<<<<< HEAD
-
-=======
-/*
-	let edit = document.querySelector(".edit");
-	edit.addEventListener("click", function(){
-
-	});
-*/
 
 
-=======
->>>>>>> 4780d1040d5b8a907f734a2a7540a71ab6f26c4f
 // Suppression d'une idée (name et plan) et de tous ses commentaires
 /*
 document.querySelector(".delete").addEventListener("click", () => {
