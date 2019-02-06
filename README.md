@@ -1,7 +1,6 @@
 
 # User guide - How to be a super super vilain
-
-Reach the application [there](Github Page adress)
+Reach the application [there](https://vadimradermacher.github.io/jepsen-js-web-vananajo/)
 
 - Click on the **"New Idea"** button to create a new idea.
 - You can also edit one idea by clicking on the **"Edit"** button.
@@ -11,3 +10,4 @@ Reach the application [there](Github Page adress)
 - There, you can add comments :)
 
 - Enjoy, and good luck with your world's conquest !!!
+
