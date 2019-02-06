@@ -121,6 +121,7 @@ finally{
 	  			let commentsList = document.createElement("ul");
 	  			for (let j = 0; j < commentsArray.length; j++) {
   					let commentary = document.createElement("li");
+						commentary.className = "commentDisp";
   					let commentaryText = document.createTextNode(commentsArray[j]);
   					commentary.appendChild(commentaryText);
   					commentsList.appendChild(commentary);
@@ -131,6 +132,7 @@ finally{
 	  				commentsArray.push(textArea.value);
 		  			window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
 		  			let commentary = document.createElement("li");
+						commentary.className = "commentDisp";
 	  				let commentaryText = document.createTextNode(textArea.value);
 	  				commentary.appendChild(commentaryText);
 	  				commentsList.appendChild(commentary);
@@ -224,6 +226,7 @@ finally{
 		  			let commentsList = document.createElement("ul");
 		  			for (let j = 0; j < commentsArray.length; j++) {
 	  					let commentary = document.createElement("li");
+							commentary.className = "commentDisp";
 	  					let commentaryText = document.createTextNode(commentsArray[j]);
 	  					commentary.appendChild(commentaryText);
 	  					commentsList.appendChild(commentary);
@@ -234,6 +237,7 @@ finally{
 		  				commentsArray.push(textArea.value);
 		  				window.localStorage.setItem( 'comments' + i, JSON.stringify(commentsArray));
 		  				let commentary = document.createElement("li");
+							commentary.className = "commentDisp";
 	  					let commentaryText = document.createTextNode(textArea.value);
 	  					commentary.appendChild(commentaryText);
 	  					commentsList.appendChild(commentary);
